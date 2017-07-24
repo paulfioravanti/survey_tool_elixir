@@ -1,0 +1,11 @@
+Usage: ./bin/survey-tool [options]
+
+Specific options:
+    -q FILEPATH,                     The FILEPATH of the questions file.
+        --questions_filepath
+    -r FILEPATH,                     The FILEPATH of the responses file. Defaults to the <questions_filepath>-responses.csv
+        --responses_filepath
+
+Common options:
+    -h, --help                       Show this message
+    -v, --version                    Show version
