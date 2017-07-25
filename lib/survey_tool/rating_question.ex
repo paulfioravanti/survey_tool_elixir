@@ -1,18 +1,18 @@
-defmodule Survey.RatingQuestion do
+defmodule SurveyTool.RatingQuestion do
   alias __MODULE__, as: RatingQuestion
 
   defstruct scores: [], text: nil, theme: nil
 
   @max_score 5
-  @min_score 5
+  @min_score 1
 
-  def add_score(question = %RatingQuestion{scores: scores}, score)
-      when is_integer(score) and score in (@min_score..@max_score) do
-    {:ok, %RatingQuestion{question | scores: [score | scores]}}
+  def add_answer(question = %RatingQuestion{scores: scores}, score) do
+      # when is_integer(score) and score in (@min_score..@max_score) do
+    %RatingQuestion{question | scores: [score | scores]}
   end
-  def add_score(%RatingQuestion{}, score) do
-    {:error, "Cannot add value of #{score} to question."}
-  end
+  # def add_answer(%RatingQuestion{}, score) do
+  #   {:error, "Cannot add value of #{score} to question."}
+  # end
   # def add_score(struct, _score) do
   #   {:error, "Cannot add score to #{struct.__struct__}"}
   # end
