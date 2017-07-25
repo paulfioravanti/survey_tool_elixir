@@ -1,4 +1,6 @@
 defmodule SurveyTool.SingleSelect do
+  @moduledoc false
+
   alias __MODULE__, as: SingleSelect
 
   defstruct answers: %{}, text: nil, theme: nil
@@ -10,7 +12,6 @@ defmodule SurveyTool.SingleSelect do
           %{answers | answer => answers[answer] + 1}
         false ->
           Map.put(answers, answer, 1)
-          # %{answers | answer => 1}
       end
     %SingleSelect{question | answers: answers}
   end

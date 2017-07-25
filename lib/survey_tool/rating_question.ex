@@ -1,4 +1,6 @@
 defmodule SurveyTool.RatingQuestion do
+  @moduledoc false
+
   alias __MODULE__, as: RatingQuestion
 
   defstruct scores: [], text: nil, theme: nil
@@ -7,8 +9,10 @@ defmodule SurveyTool.RatingQuestion do
   @min_score 1
 
   def add_answer(question = %RatingQuestion{scores: scores}, score) do
-      # when is_integer(score) and score in (@min_score..@max_score) do
-    %RatingQuestion{question | scores: [score | scores]}
+    with score <- String.to_integer(score),
+         true <- score in (@min_score..@max_score) do
+      %RatingQuestion{question | scores: [score | scores]}
+    end
   end
   # def add_answer(%RatingQuestion{}, score) do
   #   {:error, "Cannot add value of #{score} to question."}
@@ -23,16 +27,12 @@ defmodule SurveyTool.RatingQuestion do
       scores
       |> length()
       |> Decimal.new()
-    scores
-    |> Enum.sum()
-    |> Decimal.new()
-    |> Decimal.div(size)
-    # size =
-    #   scores
-    #   |> length()
-    #   |> Decimal.new()
-    # sum
-    # |> Decimal.div(size)
-    # Decimal.div(Decimal.new(Enum.sum(scores)), Decimal.new(length(scores)))
+    score =
+      scores
+      |> Enum.sum()
+      |> Decimal.new()
+      |> Decimal.div(size)
+      # |> Decimal.round(2)
+      # |> Decimal.to_string()
   end
 end
