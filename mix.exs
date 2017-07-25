@@ -22,6 +22,8 @@ defmodule SurveyTool.Mixfile do
     [
       # CSV Decoding and Encoding for Elixir
       {:csv, "~> 2.0.0"},
+      # Arbitrary precision decimal arithmetic
+      {:decimal, "~> 1.0"},
       # Automatically run your Elixir project's tests each time you save a file
       {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
     ]
