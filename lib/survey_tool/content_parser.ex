@@ -76,8 +76,4 @@ defmodule SurveyTool.ContentParser do
   defp to_question({:ok, row} = {:ok, %{"type" => "singleselect"}}) do
     %SingleSelect{text: row["text"], theme: row["theme"]}
   end
-  # defp row_to_struct(%{"type" => type}) do
-  #   # Throw error?
-  #   IO.puts("Unknown question type: #{type}")
-  # end
 end
