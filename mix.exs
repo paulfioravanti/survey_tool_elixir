@@ -25,7 +25,9 @@ defmodule SurveyTool.Mixfile do
       # Arbitrary precision decimal arithmetic
       {:decimal, "~> 1.0"},
       # Automatically run your Elixir project's tests each time you save a file
-      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
+      # Generate text-based tables for display
+      {:table_rex, "~> 0.10"}
     ]
   end
 
