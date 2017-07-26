@@ -15,7 +15,7 @@ defmodule SurveyTool.ContentParser do
       |> Path.expand()
       |> File.stream!()
       |> CSV.decode(headers: true)
-      |> parse_rows()
+      |> Enum.map(&to_question/1)
     %Survey{questions: questions}
   end
 
@@ -25,36 +25,32 @@ defmodule SurveyTool.ContentParser do
     |> File.stream!()
     |> CSV.decode()
     |> Stream.chunk(@rows_per_chunk)
-    |> populate_answers(survey)
+    |> Enum.reduce(survey, &add_response/2)
   end
 
-  defp populate_answers(row, survey) do
-    Enum.reduce(row, survey, fn(row, survey) ->
-      survey = increment(survey, :response_count)
-      case timestamped?(row) do
-        {:ok, _date, _offset} ->
-          survey
-          |> increment(:participant_count)
-          |> add_answers(row)
-        {:error, _message} ->
-          survey
-      end
-    end)
+  defp add_response(response, survey) do
+    survey = increment(survey, :response_count)
+    case timestamped?(response) do
+      {:ok, _date, _offset} ->
+        survey
+        |> increment(:participant_count)
+        |> populate_answers(response)
+      {:error, _message} ->
+        survey
+    end
   end
 
-  defp add_answers(survey, row) do
+  defp populate_answers(survey, row) do
     answered_questions =
       survey.questions
       |> Stream.zip(answers(row))
-      |> tally_answers()
+      |> Enum.map(&add_answer/1)
     %Survey{survey | questions: answered_questions}
   end
 
-  defp tally_answers(dataset) do
-    Enum.map(dataset, fn({question, answer}) ->
-      question
-      |> question.__struct__.add_answer(answer)
-    end)
+  defp add_answer({question, answer}) do
+    question
+    |> question.__struct__.add_answer(answer)
   end
 
   defp increment(survey, key) do
@@ -68,28 +64,16 @@ defmodule SurveyTool.ContentParser do
     |> Enum.slice(@answers_range)
   end
 
-  defp timestamped?([{:ok, row}]) do
-    row
+  defp timestamped?([{:ok, response}]) do
+    response
     |> Enum.at(@timestamp_index)
     |> DateTime.from_iso8601()
   end
 
-  defp parse_rows(rows) do
-    Enum.map(rows, fn(row) ->
-      case row do
-        {:ok, row} ->
-          row_to_struct(row)
-        {:error, reason} ->
-           # Error handling?
-          IO.puts(reason)
-       end
-     end)
-  end
-
-  defp row_to_struct(row = %{"type" => "ratingquestion"}) do
+  defp to_question({:ok, row} = {:ok, %{"type" => "ratingquestion"}}) do
     %RatingQuestion{text: row["text"], theme: row["theme"]}
   end
-  defp row_to_struct(row = %{"type" => "singleselect"}) do
+  defp to_question({:ok, row} = {:ok, %{"type" => "singleselect"}}) do
     %SingleSelect{text: row["text"], theme: row["theme"]}
   end
   # defp row_to_struct(%{"type" => type}) do
