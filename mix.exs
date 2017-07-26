@@ -3,10 +3,10 @@ defmodule SurveyTool.Mixfile do
 
   def project do
     [
-      app: :file_parser,
+      app: :survey_tool,
       deps: deps(),
       elixir: "~> 1.5-rc",
-      escript: [main_module: SurveyTool],
+      escript: escript(),
       start_permanent: Mix.env == :prod,
       version: "0.1.0"
     ]
@@ -26,6 +26,13 @@ defmodule SurveyTool.Mixfile do
       {:decimal, "~> 1.0"},
       # Automatically run your Elixir project's tests each time you save a file
       {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
+    ]
+  end
+
+  defp escript do
+    [
+      main_module: SurveyTool,
+      path: "bin/survey-tool"
     ]
   end
 end
