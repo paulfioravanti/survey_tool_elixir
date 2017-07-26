@@ -8,10 +8,13 @@ defmodule SurveyTool.RatingQuestion do
   @max_score 5
   @min_score 1
 
+  def add_answer(question, ""), do: question
   def add_answer(question = %RatingQuestion{scores: scores}, score) do
     with score <- String.to_integer(score),
          true <- score in (@min_score..@max_score) do
       %RatingQuestion{question | scores: [score | scores]}
+    else
+      _ ->
     end
   end
   # def add_answer(%RatingQuestion{}, score) do
@@ -32,7 +35,5 @@ defmodule SurveyTool.RatingQuestion do
       |> Enum.sum()
       |> Decimal.new()
       |> Decimal.div(size)
-      # |> Decimal.round(2)
-      # |> Decimal.to_string()
   end
 end
