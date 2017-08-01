@@ -3,92 +3,52 @@ defmodule SurveyTool.CLI.Report do
 
   alias TableRex.Table
   alias SurveyTool.Survey
-  alias SurveyTool.RatingQuestion
-  alias SurveyTool.SingleSelect
+  alias SurveyTool.CLI.Report.{
+    Header,
+    ParticipationCount,
+    ParticipationPercentage,
+    QuestionAndAnswers,
+    ThemeTitle,
+    Title
+  }
+
+  @render_style %{horizontal_style: :off, vertical_style: :off}
 
   def output(survey) do
     IO.puts("")
-    table =
-      Table.new()
-      |> Table.add_row(["** SURVEY REPORT **"])
-      |> Table.add_row(["==================="])
-      |> Table.add_row([""])
-      |> Table.add_row(["Participation Percentage:\t#{formatted_participation_percentage(survey)}%"])
-      |> Table.add_row(["Participation Count:\t\t#{formatted_participation_count(survey)} Submitted"])
-    case survey.participant_count > 0 do
-      true ->
-        table =
-          table
-          |> Table.add_row([""])
-          |> Table.add_row(["Questions and Answers by Theme (submitted surveys only)"])
-          |> Table.add_row(["======================================================="])
-
-        survey.questions
-        |> Enum.group_by(fn(question) -> question.theme end)
-        |> Enum.reduce(table, fn({theme, questions}, table) ->
-            theme_divider =
-              "-"
-              |> String.duplicate(String.length(theme))
-            table =
-              table
-              |> Table.add_row([""])
-              |> Table.add_row([theme_divider])
-              |> Table.add_row([theme])
-              |> Table.add_row([theme_divider])
-            Enum.reduce(questions, table, fn(question, table) ->
-              table
-              |> Table.add_row([""])
-              |> Table.add_row(["Q: #{question.text}"])
-              |> Table.add_row([formatted_answer(question)])
-            end)
-           end)
-        |> Table.render!(horizontal_style: :off, vertical_style: :off)
-        |> IO.puts()
-        # |> Table.add_row([""])
-        # |> Table.add_row(["Q: I like the kind of work I do."])
-        # |> Table.add_row(["Average Score: 4.6 (5 responses submitted)"])
-        # |> Table.add_row([""])
-        # |> Table.add_row(["Q: Manager"])
-        # |> Table.add_row(["Bob (1), Jane (1), John (1), Mary (1), Sally (1)"])
-        # |> Table.add_row([""])
-        # |> Table.add_row(["---------"])
-        # |> Table.add_row(["The Place"])
-        # |> Table.add_row(["---------"])
-        # |> Table.add_row([""])
-        # |> Table.add_row(["Q: I feel empowered to get the work done for which I am responsible."])
-        # |> Table.add_row(["Average Score: 3.6 (5 responses submitted)"])
-        # |> Table.render!(horizontal_style: :off, vertical_style: :off)
-        # |> IO.puts()
-      false ->
-        table
-        |> Table.render!(horizontal_style: :off, vertical_style: :off)
-        |> IO.puts()
-    end
+    Table.new()
+    |> Header.row()
+    |> ParticipationPercentage.row(survey)
+    |> ParticipationCount.row(survey)
+    |> survey_body(survey)
   end
 
-  defp formatted_answer(question = %RatingQuestion{}) do
-    """
-    Average Score: #{RatingQuestion.average_score(question)}
-    (#{length(question.scores)} responses submitted)
-    """
-    |> String.replace("\n", " ")
+  defp survey_body(table, %Survey{participant_count: count}) when count < 1 do
+    table
+    |> render()
   end
-  defp formatted_answer(question = %SingleSelect{}) do
-    question.answers
-    |> Enum.map(fn({key, value}) -> "#{key} (#{value})" end)
-    |> Enum.sort()
-    |> Enum.join(", ")
+  defp survey_body(table, %Survey{questions: questions}) do
+    table
+    |> Title.row()
+    |> add_content(questions)
+    |> render()
   end
 
-  defp formatted_participation_percentage(survey) do
-    survey
-    |> Survey.participation_percentage()
-    |> Decimal.mult(Decimal.new(100))
-    |> Decimal.round(2)
-    |> Decimal.to_string()
+  defp add_content(table, questions) do
+    questions =
+      questions
+      |> Enum.group_by(fn(question) -> question.theme end)
+
+    Enum.reduce(questions, table, fn({theme, questions}, table) ->
+      table
+      |> ThemeTitle.row(theme)
+      |> QuestionAndAnswers.row(questions)
+     end)
   end
 
-  defp formatted_participation_count(survey) do
-    "#{survey.participant_count}/#{survey.response_count}"
+  defp render(table) do
+    table
+    |> Table.render!(@render_style)
+    |> IO.puts()
   end
 end

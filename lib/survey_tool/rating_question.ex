@@ -15,6 +15,7 @@ defmodule SurveyTool.RatingQuestion do
       %RatingQuestion{question | scores: [score | scores]}
     else
       _ ->
+        question
     end
   end
   # def add_answer(%RatingQuestion{}, score) do
@@ -30,10 +31,9 @@ defmodule SurveyTool.RatingQuestion do
       scores
       |> length()
       |> Decimal.new()
-    score =
-      scores
-      |> Enum.sum()
-      |> Decimal.new()
-      |> Decimal.div(size)
+    scores
+    |> Enum.sum()
+    |> Decimal.new()
+    |> Decimal.div(size)
   end
 end
