@@ -1,12 +1,11 @@
-defmodule SurveyTool.CLI.Output do
-  def messages(messages) do
-    messages
-    |> Stream.map(&formatted_output/1)
+defmodule SurveyTool.CLI.Console do
+  def output(message_list = [_head | _tail]) do
+    message_list
+    |> Enum.map(&formatted_output/1)
     |> Enum.join("\n")
-    |> message()
+    |> output()
   end
-
-  def message(message) do
+  def output(message) do
     IO.puts(message)
   end
 

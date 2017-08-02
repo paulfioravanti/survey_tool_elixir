@@ -2,7 +2,7 @@ defmodule SurveyTool.Application do
   @moduledoc false
 
   alias SurveyTool.ContentParser
-  alias SurveyTool.CLI.{OptionParser, Output, Report}
+  alias SurveyTool.CLI.{Console, OptionParser, Report}
 
   def main(argv) do
     try do
@@ -16,11 +16,11 @@ defmodule SurveyTool.Application do
         System.stop(status)
     rescue
       error in File.Error ->
-        Output.messages(
+        Console.output(
           error: "Could not generate report: #{Exception.message(error)}"
         )
       ArgumentError ->
-        Output.messages(
+        Console.output(
           error: "Could not generate report. " <>
                  "Check if your responses file fits your questions file."
         )
