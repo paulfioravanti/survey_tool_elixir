@@ -3,6 +3,7 @@ defmodule SurveyTool.CLI.Report do
 
   alias TableRex.Table
   alias SurveyTool.Survey
+  alias SurveyTool.CLI.Output
   alias SurveyTool.CLI.Report.{
     Header,
     ParticipationCount,
@@ -12,10 +13,10 @@ defmodule SurveyTool.CLI.Report do
     Title
   }
 
-  @render_style %{horizontal_style: :off, vertical_style: :off}
+  @render_style [horizontal_style: :off, vertical_style: :off]
 
   def output(survey) do
-    IO.puts("")
+    Output.message("")
     Table.new()
     |> Header.row()
     |> ParticipationPercentage.row(survey)
@@ -49,6 +50,6 @@ defmodule SurveyTool.CLI.Report do
   defp render(table) do
     table
     |> Table.render!(@render_style)
-    |> IO.puts()
+    |> Output.message()
   end
 end

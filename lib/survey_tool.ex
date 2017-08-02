@@ -3,5 +3,5 @@ defmodule SurveyTool do
 
   alias SurveyTool.Application
 
-  defdelegate start, to: Application
+  defdelegate main(argv), to: Application
 end
