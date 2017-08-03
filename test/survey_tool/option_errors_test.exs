@@ -34,7 +34,15 @@ defmodule OptionsErrorsTest do
     end
 
     @tag argv: ["--questions"]
-    test "an error message and the help message is output to stdout",
+    test "using the long questions option, an error message and " <>
+         "the help message is output to stdout",
+         %{output: output, expected: expected} do
+      assert output == expected
+    end
+
+    @tag argv: ["-q"]
+    test "using the short questions option, an error message and " <>
+         "the help message is output to stdout",
          %{output: output, expected: expected} do
       assert output == expected
     end
@@ -54,7 +62,19 @@ defmodule OptionsErrorsTest do
       "test/fixtures/valid_survey_questions.csv",
       "--responses",
     ]
-    test "an error message and the help message is output to stdout",
+    test "using the long responses option, an error message and " <>
+         "the help message is output to stdout",
+         %{output: output, expected: expected} do
+      assert output == expected
+    end
+
+    @tag argv: [
+      "-q",
+      "test/fixtures/valid_survey_questions.csv",
+      "-r",
+    ]
+    test "using the short responses option, an error message and " <>
+         "the help message is output to stdout",
          %{output: output, expected: expected} do
       assert output == expected
     end

@@ -3,28 +3,32 @@
  ===================
 
  Participation Percentage:   100.00%
- Participation Count:        6/6 Submitted
+ Participation Count:        2/2 Submitted
 
  =====================================================
  Questions & Answers by Theme (submitted surveys only)
  =====================================================
+
+ ---------
+ The Place
+ ---------
+
+ Q: I feel empowered to get the work done for which I am responsible.
+ Average Score: 3.0 (1 responses submitted)
+
+ Q: I am appropriately involved in decisions that affect my work.
+ Average Score: 5.0 (2 responses submitted)
 
  --------
  The Work
  --------
 
  Q: I like the kind of work I do.
- Average Score: 4.3 (6 responses submitted)
+ Average Score: 4.0 (1 responses submitted)
 
  Q: In general, I have the resources (e.g., business tools, information, facilities, IT or functional support) I need to be effective.
- Average Score: 4.5 (6 responses submitted)
+ Average Score: 5.0 (1 responses submitted)
 
  Q: We are working at the right pace to meet our goals.
- Average Score: 4.3 (6 responses submitted)
-
- Q: I feel empowered to get the work done for which I am responsible.
- Average Score: 3.3 (6 responses submitted)
-
- Q: Manager
- Bob (1), Jane (1), John (1), Mary (2), Sally (1)
+ Average Score: 5.0 (1 responses submitted)
 

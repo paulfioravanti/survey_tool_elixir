@@ -7,7 +7,15 @@ defmodule SurveyTool.Mixfile do
       deps: deps(),
       elixir: "~> 1.5-rc",
       escript: escript(),
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
       start_permanent: Mix.env == :prod,
+      test_coverage: [tool: ExCoveralls],
+
       version: "0.1.0"
     ]
   end
@@ -24,6 +32,8 @@ defmodule SurveyTool.Mixfile do
       {:csv, "~> 2.0.0"},
       # Arbitrary precision decimal arithmetic
       {:decimal, "~> 1.0"},
+      # Coverage report tool for Elixir
+      {:excoveralls, "~> 0.7", only: :test},
       # Automatically run your Elixir project's tests each time you save a file
       {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
       # Generate text-based tables for display
