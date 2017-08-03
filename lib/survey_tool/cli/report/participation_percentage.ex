@@ -14,7 +14,7 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   end
 
   defp content(percent) do
-    "Participation Percentage:\t#{formatted_percentage(percent)}"
+    "Participation Percentage:   #{formatted_percentage(percent)}"
   end
 
   defp formatted_percentage(percent) do

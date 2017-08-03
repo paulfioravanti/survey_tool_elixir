@@ -12,8 +12,8 @@ defmodule SurveyTool.Application do
       |> ContentParser.populate_survey(responses)
       |> Report.output()
     catch
-      {:stop, status} ->
-        System.stop(status)
+      :halt ->
+        :ok
     rescue
       error in File.Error ->
         Console.output(

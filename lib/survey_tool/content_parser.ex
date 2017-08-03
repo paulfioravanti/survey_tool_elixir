@@ -1,9 +1,8 @@
 defmodule SurveyTool.ContentParser do
   @moduledoc false
 
-  alias SurveyTool.SingleSelect
-  alias SurveyTool.RatingQuestion
-  alias SurveyTool.Survey
+  alias SurveyTool.CLI.Console
+  alias SurveyTool.{RatingQuestion, SingleSelect, Survey}
 
   @answers_range 3..-1
   @rows_per_chunk 1
@@ -75,5 +74,12 @@ defmodule SurveyTool.ContentParser do
   end
   defp to_question({:ok, row} = {:ok, %{"type" => "singleselect"}}) do
     %SingleSelect{text: row["text"], theme: row["theme"]}
+  end
+  defp to_question({:ok, %{"type" => type}}) do
+    Console.output(
+      error: "Could not generate report. " <>
+             "Unknown question type '#{type}' found in responses file.",
+    )
+    throw :halt
   end
 end

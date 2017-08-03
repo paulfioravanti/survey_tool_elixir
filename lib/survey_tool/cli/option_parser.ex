@@ -23,12 +23,12 @@ defmodule SurveyTool.CLI.OptionParser do
   # Specify to print help (valid)
   defp process({[help: true], _args, _invalid}) do
     Console.output(@help)
-    throw {:stop, 0}
+    throw :halt
   end
   # Specify to print version (valid)
   defp process({[version: true], _args, _invalid}) do
     Console.output(@version)
-    throw {:stop, 0}
+    throw :halt
   end
   # questions option is specified, but its value is nil (invalid)
   defp process({_parsed, _args, [{"--questions", nil}]}) do
@@ -62,7 +62,7 @@ defmodule SurveyTool.CLI.OptionParser do
       error: "questions option must be provided.",
       info: @help
     )
-    throw {:stop, 1}
+    throw :halt
   end
 
   defp responses_filepath(questions_filepath) do
@@ -77,7 +77,7 @@ defmodule SurveyTool.CLI.OptionParser do
       error: "Path must be specified for questions option.",
       info: @help
     )
-    throw {:stop, 1}
+    throw :halt
   end
 
   def handle_bad_responses do
@@ -85,6 +85,6 @@ defmodule SurveyTool.CLI.OptionParser do
       error: "Path must be specified for responses option.",
       info: @help
     )
-    throw {:stop, 1}
+    throw :halt
   end
 end

@@ -9,7 +9,8 @@ defmodule SurveyTool.CLI.Report.ParticipationCount do
   end
 
   defp content(survey) do
-    "Participation Count:\t\t#{formatted_participation_count(survey)} Submitted"
+    "Participation Count:        " <>
+    "#{formatted_participation_count(survey)} Submitted"
   end
 
   defp formatted_participation_count(survey) do

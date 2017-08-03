@@ -1,7 +1,7 @@
-+-------------+------------+--------+-------+
-|            ** SURVEY REPORT **            |
-+-------------+------------+--------+-------+
-| Participation Percentage |           0.0% |
-+-------------+------------+--------+-------+
-| Participant Count        | 0/5 submitted. |
-+-------------+------------+--------+-------+
+
+ ** SURVEY REPORT **
+ ===================
+
+ Participation Percentage:   0.00%
+ Participation Count:        0/5 Submitted
+
