@@ -18,12 +18,6 @@ defmodule SurveyTool.RatingQuestion do
         question
     end
   end
-  # def add_answer(%RatingQuestion{}, score) do
-  #   {:error, "Cannot add value of #{score} to question."}
-  # end
-  # def add_score(struct, _score) do
-  #   {:error, "Cannot add score to #{struct.__struct__}"}
-  # end
 
   def average_score(%RatingQuestion{scores: []}), do: nil
   def average_score(%RatingQuestion{scores: scores}) do
