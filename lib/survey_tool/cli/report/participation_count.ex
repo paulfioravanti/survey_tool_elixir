@@ -1,15 +1,20 @@
 defmodule SurveyTool.CLI.Report.ParticipationCount do
-  @moduledoc false
+  @moduledoc """
+  Module representing the the participation count on a report.
+  """
 
   alias TableRex.Table
 
+  @doc """
+  Adds the participation count to a report table.
+  """
   def row(table, survey) do
     table
     |> Table.add_row([content(survey)])
   end
 
   defp content(survey) do
-    "Participation Count:        " <>
+    "Participation Count:\s\s\s\s\s\s\s\s" <>
     "#{formatted_participation_count(survey)} Submitted"
   end
 

@@ -1,8 +1,13 @@
 defmodule SurveyTool.CLI.Report.Title do
-  @moduledoc false
+  @moduledoc """
+  Module representing the overall title for a survey report.
+  """
 
   alias TableRex.Table
 
+  @doc """
+  Adds the title to a report table.
+  """
   def row(table) do
     table
     |> Table.add_row([""])

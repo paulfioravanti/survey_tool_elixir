@@ -32,6 +32,8 @@ defmodule SurveyTool.Mixfile do
       {:csv, "~> 2.0.0"},
       # Arbitrary precision decimal arithmetic
       {:decimal, "~> 1.0"},
+      # A code style linter for Elixir, powered by shame
+      {:dogma, "~> 0.1", only: [:dev, :test]},
       # Coverage report tool for Elixir
       {:excoveralls, "~> 0.7", only: :test},
       # Automatically run your Elixir project's tests each time you save a file

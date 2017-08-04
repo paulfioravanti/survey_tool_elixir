@@ -2,7 +2,7 @@ defmodule OptionsErrorsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
 
-  @help_output File.read!("lib/survey_tool/cli/help.txt")
+  @help_output "#{File.read!("lib/survey_tool/cli/help.txt")}\n"
 
   setup(%{argv: argv}) do
     output = capture_io(fn -> SurveyTool.main(argv) end)
@@ -13,7 +13,7 @@ defmodule OptionsErrorsTest do
     @error_message "questions option must be provided."
                    |> Utilities.error_string()
     setup do
-      expected_output = "#{@error_message}\n#{@help_output}\n"
+      expected_output = "#{@error_message}#{@help_output}"
       {:ok, [expected: expected_output]}
     end
 
@@ -29,7 +29,7 @@ defmodule OptionsErrorsTest do
                    |> Utilities.error_string()
 
     setup do
-      expected_output = "#{@error_message}\n#{@help_output}\n"
+      expected_output = "#{@error_message}#{@help_output}"
       {:ok, [expected: expected_output]}
     end
 
@@ -53,7 +53,7 @@ defmodule OptionsErrorsTest do
                    |> Utilities.error_string()
 
     setup do
-      expected_output = "#{@error_message}\n#{@help_output}\n"
+      expected_output = "#{@error_message}#{@help_output}"
       {:ok, [expected: expected_output]}
     end
 
@@ -85,7 +85,7 @@ defmodule OptionsErrorsTest do
                    |> Utilities.error_string()
 
     setup do
-      expected_output = "#{@error_message}\n#{@help_output}\n"
+      expected_output = "#{@error_message}#{@help_output}"
       {:ok, [expected: expected_output]}
     end
 

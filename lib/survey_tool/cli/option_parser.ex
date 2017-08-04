@@ -1,5 +1,7 @@
 defmodule SurveyTool.CLI.OptionParser do
-  @moduledoc false
+  @moduledoc """
+  Parser for command line arguments.
+  """
 
   alias SurveyTool.CLI.Console
 
@@ -14,6 +16,11 @@ defmodule SurveyTool.CLI.OptionParser do
   @help File.read!(Path.expand("help.txt", __DIR__))
   @version Mix.Project.config[:version]
 
+  @doc """
+  Parses a list of arguments and either returns a set of questions
+  and responses for a survey, or outputs a message to the console
+  and halts operation.
+  """
   def parse(argv) do
     argv
     |> OptionParser.parse(strict: @argument_types, aliases: @aliases)

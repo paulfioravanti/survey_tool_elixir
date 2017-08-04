@@ -3,9 +3,12 @@ defmodule ResponsesFileErrorsTest do
   import ExUnit.CaptureIO
 
   describe "Responses file doesn't match questions file" do
-    @error_message "Could not generate report. " <>
-                   "Check if your responses file fits your questions file."
-                   |> Utilities.error_string()
+    @error_message """
+    Could not generate report.\s
+    Check if your responses file fits your questions file.
+    """
+    |> String.replace("\n", "")
+    |> Utilities.error_string()
 
     setup(%{argv: argv}) do
       output = capture_io(fn -> SurveyTool.main(argv) end)

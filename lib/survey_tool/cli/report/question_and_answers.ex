@@ -1,11 +1,17 @@
 defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
-  @moduledoc false
+  @moduledoc """
+  Module representing the body of a survey question
+  and its answers on a report.
+  """
 
   alias TableRex.Table
   alias SurveyTool.{RatingQuestion, SingleSelect}
 
   @rounding_precision 1
 
+  @doc """
+  Adds a question and its answers to a report table.
+  """
   def row(table, questions) do
     Enum.reduce(questions, table, fn(question, table) ->
       table

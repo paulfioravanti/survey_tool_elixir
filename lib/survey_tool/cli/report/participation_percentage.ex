@@ -1,5 +1,7 @@
 defmodule SurveyTool.CLI.Report.ParticipationPercentage do
-  @moduledoc false
+  @moduledoc """
+  Module representing the participation percentage on a report.
+  """
 
   alias TableRex.Table
   alias SurveyTool.Survey
@@ -7,6 +9,9 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   @percent_multiplier Decimal.new(100)
   @rounding_precision 2
 
+  @doc """
+  Adds the participation percentage to the report table.
+  """
   def row(table, survey) do
     percent = Survey.participation_percentage(survey)
     table
@@ -14,7 +19,7 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   end
 
   defp content(percent) do
-    "Participation Percentage:   #{formatted_percentage(percent)}"
+    "Participation Percentage:\s\s\s#{formatted_percentage(percent)}"
   end
 
   defp formatted_percentage(percent) do

@@ -1,5 +1,7 @@
 defmodule SurveyTool.ContentParser do
-  @moduledoc false
+  @moduledoc """
+  Responsible for parsing content in question and answer CSV files.
+  """
 
   alias SurveyTool.CLI.Console
   alias SurveyTool.{RatingQuestion, SingleSelect, Survey}
@@ -8,6 +10,11 @@ defmodule SurveyTool.ContentParser do
   @rows_per_chunk 1
   @timestamp_index 2
 
+  @doc """
+  Reads and parses the set of questions from a given CSV file
+  and initialises a `%Survey{}` struct to hold the resulting list
+  of questions.
+  """
   def generate_survey(csv_filepath) do
     questions =
       csv_filepath
@@ -18,6 +25,11 @@ defmodule SurveyTool.ContentParser do
     %Survey{questions: questions}
   end
 
+  @doc """
+  Maps responses contained in a given CSV file to questions in
+  a `survey` and populates the survey with any relevant answers
+  to the questions.
+  """
   def populate_survey(survey, csv_filepath) do
     csv_filepath
     |> Path.expand()

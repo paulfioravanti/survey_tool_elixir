@@ -1,5 +1,7 @@
 defmodule SurveyTool.CLI.Report do
-  @moduledoc false
+  @moduledoc """
+  Module representing a survey report.
+  """
 
   alias TableRex.Table
   alias SurveyTool.Survey
@@ -15,6 +17,9 @@ defmodule SurveyTool.CLI.Report do
 
   @render_style [horizontal_style: :off, vertical_style: :off]
 
+  @doc """
+  Outputs the report content to the console.
+  """
   def output(survey) do
     Console.output("")
     Table.new()
@@ -22,17 +27,16 @@ defmodule SurveyTool.CLI.Report do
     |> ParticipationPercentage.row(survey)
     |> ParticipationCount.row(survey)
     |> survey_body(survey)
+    |> render()
   end
 
   defp survey_body(table, %Survey{participant_count: count}) when count < 1 do
     table
-    |> render()
   end
   defp survey_body(table, %Survey{questions: questions}) do
     table
     |> Title.row()
     |> add_content(questions)
-    |> render()
   end
 
   defp add_content(table, questions) do
