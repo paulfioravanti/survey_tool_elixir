@@ -11,7 +11,10 @@ defmodule SurveyTool.RatingQuestion do
   @min_score 1
 
   @doc """
-  Adds an answer to a given `question` if:
+  Adds an answer to a given `question`.
+
+  An answer will only be added to the question under the
+  following conditions:
 
   - the answer is not `nil`
   - the answer is an integer
@@ -23,7 +26,7 @@ defmodule SurveyTool.RatingQuestion do
          true <- score in (@min_score..@max_score) do
       %RatingQuestion{question | scores: [score | scores]}
     else
-      _ ->
+      _invalid_score ->
         question
     end
   end

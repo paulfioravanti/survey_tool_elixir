@@ -5,14 +5,20 @@ defmodule SurveyTool.Mixfile do
     [
       app: :survey_tool,
       deps: deps(),
+      docs: [
+        main: "SurveyTool",
+        extras: ["README.md"]
+      ],
       elixir: "~> 1.5",
       escript: escript(),
+      name: "Survey Tool",
       preferred_cli_env: [
         "coveralls": :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
+      source_url: "https://github.com/paulfioravanti/survey_tool_elixir",
       start_permanent: Mix.env == :prod,
       test_coverage: [tool: ExCoveralls],
       version: "0.1.0"
