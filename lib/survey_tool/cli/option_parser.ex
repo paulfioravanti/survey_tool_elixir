@@ -5,7 +5,12 @@ defmodule SurveyTool.CLI.OptionParser do
 
   alias SurveyTool.CLI.Console
 
-  @aliases [h: :help, q: :questions, r: :responses, v: :version]
+  @aliases [
+    h: :help,
+    q: :questions,
+    r: :responses,
+    v: :version
+  ]
   @argument_types [
     help: :boolean,
     questions: :string,
@@ -13,7 +18,9 @@ defmodule SurveyTool.CLI.OptionParser do
     version: :boolean
   ]
   @filetype_regex ~r/(?=[.].+\z)/
-  @help File.read!(Path.expand("help.txt", __DIR__))
+  @help "help.txt"
+        |> Path.expand(__DIR__)
+        |> File.read!()
   @version Mix.Project.config[:version]
 
   @doc """
