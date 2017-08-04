@@ -37,6 +37,8 @@ defmodule SurveyTool.Mixfile do
       {:dogma, "~> 0.1", only: [:dev, :test]},
       # Coverage report tool for Elixir
       {:excoveralls, "~> 0.7", only: :test},
+      # ExDoc produces HTML and EPUB documentation for Elixir projects
+      {:ex_doc, "~> 0.14", only: [:dev, :test], runtime: false},
       # Automatically run your Elixir project's tests each time you save a file
       {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
       # Generate text-based tables for display

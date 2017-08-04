@@ -87,7 +87,7 @@ defmodule SurveyTool.CLI.OptionParser do
     throw :halt
   end
 
-  def handle_bad_responses do
+  defp handle_bad_responses do
     Console.output(
       error: "Path must be specified for responses option.",
       info: @help
