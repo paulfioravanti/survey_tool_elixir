@@ -32,5 +32,5 @@ if Mix.env == :dev do
   # Configures automated testing/linting
   config :mix_test_watch,
     clear: true,
-    tasks: ["coveralls.html", "dogma"]
+    tasks: ["coveralls.html", "dogma", "credo --strict"]
 end

@@ -5,7 +5,7 @@ defmodule SurveyTool.Mixfile do
     [
       app: :survey_tool,
       deps: deps(),
-      elixir: "~> 1.5-rc",
+      elixir: "~> 1.5",
       escript: escript(),
       preferred_cli_env: [
         "coveralls": :test,
@@ -15,7 +15,6 @@ defmodule SurveyTool.Mixfile do
       ],
       start_permanent: Mix.env == :prod,
       test_coverage: [tool: ExCoveralls],
-
       version: "0.1.0"
     ]
   end
@@ -28,6 +27,8 @@ defmodule SurveyTool.Mixfile do
 
   defp deps do
     [
+      # A static code analysis tool for the Elixir language
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       # CSV Decoding and Encoding for Elixir
       {:csv, "~> 2.0.0"},
       # Arbitrary precision decimal arithmetic
