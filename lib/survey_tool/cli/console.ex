@@ -3,11 +3,15 @@ defmodule SurveyTool.CLI.Console do
   Module concerned with outputting content to `stdout`.
   """
 
+  @typedoc "List of message types that can be outputted to console."
+  @type messages_list() :: [error: String.t, info: String.t]
+
   @doc """
   Formats and outputs a message or list of messages to `stdout`.
   """
-  def output(message_list = [_head | _tail]) do
-    message_list
+  @spec output(messages_list | String.t) :: :ok
+  def output(messages_list = [_head | _tail]) do
+    messages_list
     |> Enum.map(&formatted_output/1)
     |> Enum.join("\n")
     |> output()

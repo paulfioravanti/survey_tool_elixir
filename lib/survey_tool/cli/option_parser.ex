@@ -21,6 +21,7 @@ defmodule SurveyTool.CLI.OptionParser do
   and responses for a survey, or outputs a message to the console
   and halts operation.
   """
+  @spec parse([String.t]) :: [questions: String.t, responses: String.t]
   def parse(argv) do
     argv
     |> OptionParser.parse(strict: @argument_types, aliases: @aliases)

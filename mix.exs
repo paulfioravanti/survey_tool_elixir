@@ -5,6 +5,7 @@ defmodule SurveyTool.Mixfile do
     [
       app: :survey_tool,
       deps: deps(),
+      dialyzer: [plt_add_deps: :project],
       docs: [
         main: "SurveyTool",
         extras: ["README.md"]
@@ -39,6 +40,8 @@ defmodule SurveyTool.Mixfile do
       {:csv, "~> 2.0.0"},
       # Arbitrary precision decimal arithmetic
       {:decimal, "~> 1.0"},
+      # Mix tasks to simplify use of Dialyzer in Elixir projects.
+      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # A code style linter for Elixir, powered by shame
       {:dogma, "~> 0.1", only: [:dev, :test]},
       # Coverage report tool for Elixir

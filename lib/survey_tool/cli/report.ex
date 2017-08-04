@@ -20,6 +20,7 @@ defmodule SurveyTool.CLI.Report do
   @doc """
   Outputs the report content to the console.
   """
+  @spec output(Survey.t) :: :ok
   def output(survey) do
     Console.output("")
     Table.new()

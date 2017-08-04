@@ -12,6 +12,7 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
   @doc """
   Adds a question and its answers to a report table.
   """
+  @spec row(Table.t, [RatingQuestion.t | SingleSelect.t]) :: Table.t
   def row(table, questions) do
     Enum.reduce(questions, table, fn(question, table) ->
       table

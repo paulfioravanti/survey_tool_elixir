@@ -8,6 +8,7 @@ defmodule SurveyTool.CLI.Report.Title do
   @doc """
   Adds the title to a report table.
   """
+  @spec row(Table.t) :: Table.t
   def row(table) do
     table
     |> Table.add_row([""])

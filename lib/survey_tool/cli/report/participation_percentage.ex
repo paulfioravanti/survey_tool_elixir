@@ -12,6 +12,7 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   @doc """
   Adds the participation percentage to the report table.
   """
+  @spec row(Table.t, Survey.t) :: Table.t
   def row(table, survey) do
     percent = Survey.participation_percentage(survey)
     table
@@ -19,7 +20,8 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   end
 
   defp content(percent) do
-    "Participation Percentage:\s\s\s#{formatted_percentage(percent)}"
+    "Participation Percentage:#{String.duplicate("\s", 3)}" <>
+    formatted_percentage(percent)
   end
 
   defp formatted_percentage(percent) do

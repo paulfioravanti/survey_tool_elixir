@@ -15,6 +15,7 @@ defmodule SurveyTool.ContentParser do
   and initialises a `%Survey{}` struct to hold the resulting list
   of questions.
   """
+  @spec generate_survey(String.t) :: Survey.t
   def generate_survey(csv_filepath) do
     questions =
       csv_filepath
@@ -30,6 +31,7 @@ defmodule SurveyTool.ContentParser do
   a `survey` and populates the survey with any relevant answers
   to the questions.
   """
+  @spec populate_survey(Survey.t, String.t) :: Survey.t
   def populate_survey(survey, csv_filepath) do
     csv_filepath
     |> Path.expand()

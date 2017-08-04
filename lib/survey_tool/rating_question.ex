@@ -7,6 +7,17 @@ defmodule SurveyTool.RatingQuestion do
 
   defstruct scores: [], text: nil, theme: nil
 
+  @typedoc "An optional list of integer scores"
+  @type scores() :: [integer] | []
+  @typedoc "Optional string"
+  @type optional_string() :: String.t | nil
+  @typedoc "Rating question struct type."
+  @type t() :: %RatingQuestion{
+    scores: scores(),
+    text: optional_string(),
+    theme: optional_string()
+  }
+
   @max_score 5
   @min_score 1
 
@@ -20,7 +31,8 @@ defmodule SurveyTool.RatingQuestion do
   - the answer is an integer
   - the answer falls with the accepted numerical range
   """
-  def add_answer(question, ""), do: question
+  @spec add_answer(RatingQuestion.t, String.t) :: RatingQuestion.t
+  def add_answer(question = %RatingQuestion{}, ""), do: question
   def add_answer(question = %RatingQuestion{scores: scores}, score) do
     with score <- String.to_integer(score),
          true <- score in (@min_score..@max_score) do
@@ -35,6 +47,7 @@ defmodule SurveyTool.RatingQuestion do
   Calculates the average score for a given question.
   No score is calculated for questions that have no scores.
   """
+  @spec average_score(RatingQuestion.t) :: Decimal.t
   def average_score(%RatingQuestion{scores: []}), do: nil
   def average_score(%RatingQuestion{scores: scores}) do
     size =

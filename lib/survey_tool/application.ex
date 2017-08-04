@@ -10,6 +10,7 @@ defmodule SurveyTool.Application do
   Starts the survey tool, performs all operations, and handles any
   premature exiting of the program.
   """
+  @spec start([String.t] | []) :: :ok
   def start(argv) do
     [questions: questions, responses: responses] = OptionParser.parse(argv)
     questions
