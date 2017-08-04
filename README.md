@@ -55,9 +55,10 @@ coverage report:
 ## Application Documentation
 
 Generate the [ExDoc](https://github.com/elixir-lang/ex_doc) documentation
-(if not already done by running the tests):
+(if not already done by running the tests) and open them:
 
     $ mix docs
+    $ open doc/index.html
 
 ## Other
 
