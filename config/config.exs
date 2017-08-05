@@ -37,7 +37,7 @@ if Mix.env == :dev do
       "dogma",
       "credo --strict",
       "docs",
-      "inch",
+      "inch --pedantic",
       "dialyzer --halt-exit-status"
     ]
 end
