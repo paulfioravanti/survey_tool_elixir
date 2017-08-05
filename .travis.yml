@@ -1,0 +1,23 @@
+sudo: false
+dist: trusty
+language: elixir
+elixir:
+  - 1.5.1
+otp_release:
+  - 20.0
+# addons:
+#   code_climate:
+#     repo_token: $CODECLIMATE_REPO_TOKEN
+script:
+  # Ensure gem dependencies are not outdated
+  - mix hex.outdated
+  # Run tests and coverage
+  - mix coveralls
+  # Run dogma code quality check
+  - mix dogma
+  # Run credo code quality check
+  - mix credo --strict
+  # Run dialyzer to ensure specs are correct
+  - mix dialyzer --halt-exit-status
+# after_success:
+  # Send results off to Code Climate
