@@ -24,7 +24,10 @@ script:
   # NOTE: --no-check option added to skip check on whether PLT file needs to be
   # updated. The version in the cached _build file will be used, hence not
   # slowing down the build while the PLT file gets rebuilt.
-  - mix dialyzer --halt-exit-status --no-check
+  # The --no-check option will have to be removed on a single build if Elixir
+  # or Erlang versions update, but can then be re-instated.
+  # - mix dialyzer --halt-exit-status --no-check
+  - mix dialyzer --halt-exit-status
 after_script:
   # Run inline documentation report
   - MIX_ENV=docs mix deps.get
