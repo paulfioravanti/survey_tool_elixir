@@ -29,5 +29,4 @@ script:
   - mix dialyzer --halt-exit-status --no-check
 after_script:
   # Run inline documentation report
-  - MIX_ENV=docs mix deps.get
-  - MIX_ENV=docs mix inch.report
+  - mix inch.report
