@@ -19,5 +19,7 @@ script:
   - mix credo --strict
   # Run dialyzer to ensure specs are correct
   - mix dialyzer --halt-exit-status
-# after_success:
+after_success:
+  # Run inline documentation report
+  - mix inch.report
   # Send results off to Code Climate
