@@ -21,9 +21,10 @@ script:
   - mix dogma
   # Run credo code quality check
   - mix credo --strict
-  # Run dialyzer to ensure specs are correct
-  # Extra options added in an attempt to speed up Travis builds. More info at:
-  # http://blog.danielberkompas.com/elixir/2015/04/03/run-dialyzer-on-elixir-on-travis.html
+  # Run dialyzer to ensure specs are correct.
+  # NOTE: --no-check option added to skip check on whether PLT file needs to be
+  # updated. The version in the cached _build file will be used, hence not
+  # slowing down the build while the PLT file gets rebuilt.
   - mix dialyzer --halt-exit-status --no-check
 # after_success:
   # Send results off to Code Climate
