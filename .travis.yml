@@ -22,10 +22,12 @@ script:
   # Run credo code quality check
   - mix credo --strict
   # Run dialyzer to ensure specs are correct
-  - mix dialyzer --halt-exit-status
+  # Extra options added in an attempt to speed up Travis builds. More info at:
+  # http://blog.danielberkompas.com/elixir/2015/04/03/run-dialyzer-on-elixir-on-travis.html
+  - mix dialyzer --halt-exit-status --no_check_plt --no_native
 # after_success:
   # Send results off to Code Climate
 after_script:
   # Run inline documentation report
-  - mix deps.get --only docs
+  - MIX_ENV=docs mix deps.get
   - MIX_ENV=docs mix inch.report
