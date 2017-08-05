@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/paulfioravanti/survey_tool_elixir.svg?branch=master)](https://travis-ci.org/paulfioravanti/survey_tool_elixir)
 [![Inline docs](http://inch-ci.org/github/paulfioravanti/survey_tool_elixir.svg)](http://inch-ci.org/github/paulfioravanti/survey_tool_elixir)
+[![Deps Status](https://beta.hexfaktor.org/badge/all/github/paulfioravanti/survey_tool_elixir.svg)](https://beta.hexfaktor.org/github/paulfioravanti/survey_tool_elixir)
 
 # CSV Survey Tool Developer Coding Test
 
