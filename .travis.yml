@@ -26,8 +26,7 @@ script:
   # slowing down the build while the PLT file gets rebuilt.
   # The --no-check option will have to be removed on a single build if Elixir
   # or Erlang versions update, but can then be re-instated.
-  # - mix dialyzer --halt-exit-status --no-check
-  - mix dialyzer --halt-exit-status
+  - mix dialyzer --halt-exit-status --no-check
 after_script:
   # Run inline documentation report
   - MIX_ENV=docs mix deps.get
