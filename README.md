@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/paulfioravanti/survey_tool_elixir.svg?branch=master)](https://travis-ci.org/paulfioravanti/survey_tool_elixir)
+
 # CSV Survey Tool Developer Coding Test
 
 An [Elixir](https://github.com/elixir-lang/elixir) CLI application that
