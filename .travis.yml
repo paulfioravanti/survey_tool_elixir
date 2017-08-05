@@ -5,9 +5,6 @@ elixir:
   - 1.5.1
 otp_release:
   - 20.0
-# addons:
-#   code_climate:
-#     repo_token: $CODECLIMATE_REPO_TOKEN
 cache:
   directories:
     - _build
@@ -15,8 +12,8 @@ cache:
 script:
   # Ensure gem dependencies are not outdated
   - mix hex.outdated
-  # Run tests and coverage
-  - mix coveralls
+  # Run tests and coverage on CI
+  - mix coveralls.travis
   # Run dogma code quality check
   - mix dogma
   # Run credo code quality check
@@ -26,8 +23,6 @@ script:
   # updated. The version in the cached _build file will be used, hence not
   # slowing down the build while the PLT file gets rebuilt.
   - mix dialyzer --halt-exit-status --no-check
-# after_success:
-  # Send results off to Code Climate
 after_script:
   # Run inline documentation report
   - MIX_ENV=docs mix deps.get

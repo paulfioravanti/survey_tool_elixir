@@ -27,9 +27,12 @@ defmodule SurveyTool.ContentParser do
   end
 
   @doc """
-  Maps responses contained in a given CSV file to questions in
+  Maps responses contained in a given CSV file `csv_filepath `to questions in
   a `survey` and populates the survey with any relevant answers
   to the questions.
+
+  Returns a `%Survey{}` struct.
+
   """
   @spec populate_survey(Survey.t, String.t) :: Survey.t
   def populate_survey(survey, csv_filepath) do
