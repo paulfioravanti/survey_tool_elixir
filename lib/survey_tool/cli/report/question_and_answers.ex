@@ -11,6 +11,11 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
 
   @doc """
   Adds a question and its answers to a report table.
+
+  ## Parameters
+
+    - `table`: The table to add the `questions` to.
+    - `questions`: The set of questions and answers to add to the `table`.
   """
   @spec row(Table.t, [RatingQuestion.t | SingleSelect.t]) :: Table.t
   def row(table, questions) do

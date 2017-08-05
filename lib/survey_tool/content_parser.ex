@@ -14,6 +14,10 @@ defmodule SurveyTool.ContentParser do
   Reads and parses the set of questions from a given CSV file
   and initialises a `%Survey{}` struct to hold the resulting list
   of questions.
+
+  ## Parameters:
+
+    - `csv_filepath`: The filepath to the questions CSV file.
   """
   @spec generate_survey(String.t) :: Survey.t
   def generate_survey(csv_filepath) do
@@ -27,12 +31,14 @@ defmodule SurveyTool.ContentParser do
   end
 
   @doc """
-  Maps responses contained in a given CSV file `csv_filepath `to questions in
+  Maps responses contained in a given CSV file to questions in
   a `survey` and populates the survey with any relevant answers
   to the questions.
 
-  Returns a `%Survey{}` struct.
+  ## Parameters:
 
+    - `survey`: The survey to populate
+    - `csv_filepath`: The filepath to the responses CSV file.
   """
   @spec populate_survey(Survey.t, String.t) :: Survey.t
   def populate_survey(survey, csv_filepath) do

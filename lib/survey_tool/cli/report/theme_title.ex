@@ -10,6 +10,11 @@ defmodule SurveyTool.CLI.Report.ThemeTitle do
 
   @doc """
   Adds the title for a given theme to a report table.
+
+  ## Parameters
+
+    - `table`: The table to add the theme title to.
+    - `theme`: The name of the theme.
   """
   @spec row(Table.t, String.t) :: Table.t
   def row(table, theme) do

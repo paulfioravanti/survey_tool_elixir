@@ -7,6 +7,10 @@ defmodule SurveyTool.CLI.Report.Header do
 
   @doc """
   Adds the header row to the report table.
+
+  ## Parameters
+
+    - `table`: The table to add the header to.
   """
   @spec row(Table.t) :: Table.t
   def row(table) do

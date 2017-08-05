@@ -24,12 +24,19 @@ defmodule SurveyTool.RatingQuestion do
   @doc """
   Adds an answer to a given `question`.
 
+  ## Parameters
+
+    - `question`: The `RatingQuestion` to add the score to.
+    - `score`: The score value to add.
+
+  ## Validations
+
   An answer will only be added to the question under the
   following conditions:
 
-  - the answer is not `nil`
-  - the answer is an integer
-  - the answer falls with the accepted numerical range
+    - the answer is not `nil`
+    - the answer is an integer
+    - the answer falls with the accepted numerical range
   """
   @spec add_answer(RatingQuestion.t, String.t) :: RatingQuestion.t
   def add_answer(question = %RatingQuestion{}, ""), do: question
@@ -46,10 +53,15 @@ defmodule SurveyTool.RatingQuestion do
   @doc """
   Calculates the average score for a given question.
   No score is calculated for questions that have no scores.
+
+  ## Parameters
+
+    - `question`: The question from which to get the scores to calculate
+      the average score.
   """
   @spec average_score(RatingQuestion.t) :: Decimal.t
-  def average_score(%RatingQuestion{scores: []}), do: nil
-  def average_score(%RatingQuestion{scores: scores}) do
+  def average_score(_question = %RatingQuestion{scores: []}), do: nil
+  def average_score(_question = %RatingQuestion{scores: scores}) do
     size =
       scores
       |> length()

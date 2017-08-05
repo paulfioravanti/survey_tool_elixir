@@ -11,6 +11,11 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
 
   @doc """
   Adds the participation percentage to the report table.
+
+  ## Parameters
+
+    - `table`: The table to add the participation percentage to.
+    - `survey`: The survey from which to calculate the participation percentage.
   """
   @spec row(Table.t, Survey.t) :: Table.t
   def row(table, survey) do

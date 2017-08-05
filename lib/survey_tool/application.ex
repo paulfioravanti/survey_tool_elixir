@@ -9,6 +9,10 @@ defmodule SurveyTool.Application do
   @doc """
   Starts the survey tool, performs all operations, and handles any
   premature exiting of the program.
+
+  ## Parameters
+
+    - `argv`: The list of command line arguments.
   """
   @spec start([String.t] | []) :: :ok
   def start(argv) do

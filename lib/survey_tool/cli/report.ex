@@ -19,6 +19,10 @@ defmodule SurveyTool.CLI.Report do
 
   @doc """
   Outputs the report content to the console.
+
+  ## Parameters
+
+    - `survey`: The survey whose contents are to be output to the console.
   """
   @spec output(Survey.t) :: :ok
   def output(survey) do

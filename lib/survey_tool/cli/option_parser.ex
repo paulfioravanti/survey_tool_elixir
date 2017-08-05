@@ -27,6 +27,10 @@ defmodule SurveyTool.CLI.OptionParser do
   Parses a list of arguments and either returns a set of questions
   and responses for a survey, or outputs a message to the console
   and halts operation.
+
+  ## Parameters
+
+    - `argv`: The list of command line arguments.
   """
   @spec parse([String.t]) :: [questions: String.t, responses: String.t]
   def parse(argv) do

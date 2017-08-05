@@ -8,6 +8,11 @@ defmodule SurveyTool.CLI.Report.ParticipationCount do
 
   @doc """
   Adds the participation count to a report table.
+
+  ## Parameters
+
+    - `table`: The table to add the participation count to.
+    - `survey`: The survey from which to calculate the participation count.
   """
   @spec row(Table.t, Survey.t) :: Table.t
   def row(table, survey) do
