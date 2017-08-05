@@ -9,6 +9,8 @@ cache:
   directories:
     - _build
     - deps
+env:
+  - MIX_ENV=test
 script:
   # Ensure gem dependencies are not outdated
   - mix hex.outdated
