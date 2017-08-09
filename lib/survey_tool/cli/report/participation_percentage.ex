@@ -19,12 +19,15 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   """
   @spec row(Table.t, Survey.t) :: Table.t
   def row(table, survey) do
-    percent = Survey.participation_percentage(survey)
+    content =
+      survey
+      |> Survey.participation_percentage()
+      |> percentage_row()
     table
-    |> Table.add_row([content(percent)])
+    |> Table.add_row([content])
   end
 
-  defp content(percent) do
+  defp percentage_row(percent) do
     "Participation Percentage:#{String.duplicate("\s", 3)}" <>
     formatted_percentage(percent)
   end

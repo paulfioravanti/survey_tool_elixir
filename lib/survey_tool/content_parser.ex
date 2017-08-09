@@ -52,7 +52,7 @@ defmodule SurveyTool.ContentParser do
 
   defp add_response(response, survey) do
     survey = increment(survey, :response_count)
-    case timestamped?(response) do
+    case check_timestamp(response) do
       {:ok, _date, _offset} ->
         survey
         |> increment(:participant_count)
@@ -86,7 +86,7 @@ defmodule SurveyTool.ContentParser do
     |> Enum.slice(@answers_range)
   end
 
-  defp timestamped?([{:ok, response}]) do
+  defp check_timestamp([{:ok, response}]) do
     response
     |> Enum.at(@timestamp_index)
     |> DateTime.from_iso8601()

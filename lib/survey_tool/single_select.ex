@@ -32,17 +32,7 @@ defmodule SurveyTool.SingleSelect do
   """
   @spec add_answer(SingleSelect.t, String.t) :: SingleSelect.t
   def add_answer(question = %SingleSelect{answers: answers}, answer) do
-    answers =
-      answers
-      |> Map.has_key?(answer)
-      |> record_answer(answers, answer)
+    answers = Map.update(answers, answer, 1, fn(count) -> count + 1 end)
     %SingleSelect{question | answers: answers}
-  end
-
-  defp record_answer(true, answers, answer) do
-    %{answers | answer => answers[answer] + 1}
-  end
-  defp record_answer(false, answers, answer) do
-    Map.put(answers, answer, 1)
   end
 end
