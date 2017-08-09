@@ -8,6 +8,7 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
 
   @percent_multiplier Decimal.new(100)
   @rounding_precision 2
+  @spacer String.duplicate("\s", 3)
 
   @doc """
   Adds the participation percentage to the report table.
@@ -23,13 +24,13 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
       survey
       |> Survey.participation_percentage()
       |> percentage_row()
+
     table
     |> Table.add_row([content])
   end
 
   defp percentage_row(percent) do
-    "Participation Percentage:#{String.duplicate("\s", 3)}" <>
-    formatted_percentage(percent)
+    "Participation Percentage:#{@spacer}#{formatted_percentage(percent)}"
   end
 
   defp formatted_percentage(percent) do
