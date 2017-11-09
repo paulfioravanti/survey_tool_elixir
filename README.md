@@ -1,13 +1,13 @@
-[![Build Status](https://travis-ci.org/paulfioravanti/survey_tool_elixir.svg?branch=master)](https://travis-ci.org/paulfioravanti/survey_tool_elixir)
-[![Code Climate](https://codeclimate.com/github/paulfioravanti/survey_tool_elixir/badges/gpa.svg)](https://codeclimate.com/github/paulfioravanti/survey_tool_elixir)
-[![Coverage Status](https://coveralls.io/repos/github/paulfioravanti/survey_tool_elixir/badge.svg?branch=master)](https://coveralls.io/github/paulfioravanti/survey_tool_elixir?branch=master)
-[![Inline docs](http://inch-ci.org/github/paulfioravanti/survey_tool_elixir.svg)](http://inch-ci.org/github/paulfioravanti/survey_tool_elixir)
-[![Deps Status](https://beta.hexfaktor.org/badge/all/github/paulfioravanti/survey_tool_elixir.svg)](https://beta.hexfaktor.org/github/paulfioravanti/survey_tool_elixir)
+[![Build Status][travis-badge]][travis-url]
+[![Code Climate][code-climate-badge]][code-climate-url]
+[![Coverage Status][coveralls-badge]][coveralls-url]
+[![Inline docs][inch-badge]][inch-url]
+[![Deps Status][hexfaktor-badge]][hexfaktor-url]
 
 # CSV Survey Tool Developer Coding Test
 
-An [Elixir](https://github.com/elixir-lang/elixir) CLI application that
-parses and displays survey data from CSV files, and displays the results.
+An [Elixir][] CLI application that parses and displays survey data from CSV
+files, and displays the results.
 
 ## Setup
 
@@ -38,46 +38,64 @@ Other options can be seen by running the help command:
 
 ### Environment
 
-Heavy use of [mix test.watch](https://github.com/lpil/mix-test.watch) was made
-during development to ensure code quality, so I highly recommend having the
-following commands running in other terminal windows:
+Heavy use of [`mix test.watch`][] was made during development to ensure code
+quality, so I highly recommend having the following commands running in other
+terminal windows:
 
     $ mix test.watch
     $ iex -S mix
 
 ## Tests
 
-ExUnit was used for the tests, which can be run with the following command:
+[ExUnit][] was used for the tests, which can be run with the following command:
 
     $ mix test
 
 ## Coverage Report
 
-View the [ExCoveralls](https://github.com/parroty/excoveralls) test
-coverage report:
+View the [ExCoveralls][] test coverage report:
 
     $ open cover/excoveralls.html
 
 ## Application Documentation
 
-Generate the [ExDoc](https://github.com/elixir-lang/ex_doc) documentation
-(if not already done by running the tests) and open them:
+Generate the [ExDoc][] documentation (if not already done by running the tests)
+and open them:
 
     $ mix docs
     $ open doc/index.html
 
 ## Other
 
-I also wrote a version of this app in [Ruby](https://github.com/ruby/ruby),
-which can be found [here](https://github.com/paulfioravanti/survey_tool_ruby).
+I also wrote a version of this app in [Ruby][], which can be found
+[here][survey-tool-ruby].
 
 ## Social
 
-[![Contact](https://img.shields.io/badge/contact-%40paulfioravanti-blue.svg)](https://twitter.com/paulfioravanti)
+[![Contact][twitter-badge]][twitter-url]<br />
+[![Stack Overflow][stackoverflow-badge]][stackoverflow-url]
 
-<a href="http://stackoverflow.com/users/567863/paul-fioravanti">
-  <img src="http://stackoverflow.com/users/flair/567863.png" width="208" height="58" alt="profile for Paul Fioravanti at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Paul Fioravanti at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
-</a>
+[code-climate-badge]: https://codeclimate.com/github/paulfioravanti/survey_tool_elixir/badges/gpa.svg
+[code-climate-url]: https://codeclimate.com/github/paulfioravanti/survey_tool_elixir
+[coveralls-badge]: https://coveralls.io/repos/github/paulfioravanti/survey_tool_elixir/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/paulfioravanti/survey_tool_elixir?branch=master
+[Elixir]: https://github.com/elixir-lang/elixir
+[ExCoveralls]: https://github.com/parroty/excoveralls
+[ExDoc]: https://github.com/elixir-lang/ex_doc
+[ExUnit]: https://hexdocs.pm/ex_unit/ExUnit.html
+[hexfaktor-badge]: https://beta.hexfaktor.org/badge/all/github/paulfioravanti/survey_tool_elixir.svg
+[hexfaktor-url]: https://beta.hexfaktor.org/github/paulfioravanti/survey_tool_elixir
+[inch-badge]: http://inch-ci.org/github/paulfioravanti/survey_tool_elixir.svg
+[inch-url]: http://inch-ci.org/github/paulfioravanti/survey_tool_elixir
+[`mix test.watch`]: https://github.com/lpil/mix-test.watch
+[Ruby]: https://github.com/ruby/ruby
+[stackoverflow-badge]: http://stackoverflow.com/users/flair/567863.png
+[stackoverflow-url]: http://stackoverflow.com/users/567863/paul-fioravanti
+[survey-tool-ruby]: https://github.com/paulfioravanti/survey_tool_ruby
+[travis-badge]: https://travis-ci.org/paulfioravanti/survey_tool_elixir.svg?branch=master
+[travis-url]: https://travis-ci.org/paulfioravanti/survey_tool_elixir
+[twitter-badge]: https://img.shields.io/badge/contact-%40paulfioravanti-blue.svg
+[twitter-url]: https://twitter.com/paulfioravanti
 
 ---
 
