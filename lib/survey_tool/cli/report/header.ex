@@ -12,7 +12,7 @@ defmodule SurveyTool.CLI.Report.Header do
 
     - `table`: The table to add the header to.
   """
-  @spec row(Table.t) :: Table.t
+  @spec row(Table.t()) :: Table.t()
   def row(table) do
     table
     |> Table.add_row(["** SURVEY REPORT **"])

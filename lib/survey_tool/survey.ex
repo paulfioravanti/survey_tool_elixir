@@ -25,7 +25,7 @@ defmodule SurveyTool.Survey do
 
     - `survey`: The survey from which to calculate the participation percentage.
   """
-  @spec participation_percentage(Survey.t) :: Decimal.t
+  @spec participation_percentage(Survey.t()) :: Decimal.t()
   def participation_percentage(survey = %Survey{}) do
     response_count =
       survey.response_count

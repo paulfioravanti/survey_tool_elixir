@@ -24,9 +24,10 @@ defmodule SurveyTool.CLI.Report do
 
     - `survey`: The survey whose contents are to be output to the console.
   """
-  @spec output(Survey.t) :: :ok
+  @spec output(Survey.t()) :: :ok
   def output(survey) do
     Console.output("")
+
     Table.new()
     |> Header.row()
     |> ParticipationPercentage.row(survey)
@@ -38,6 +39,7 @@ defmodule SurveyTool.CLI.Report do
   defp survey_body(table, %Survey{participant_count: count}) when count < 1 do
     table
   end
+
   defp survey_body(table, %Survey{questions: questions}) do
     table
     |> Title.row()
@@ -47,13 +49,13 @@ defmodule SurveyTool.CLI.Report do
   defp add_content(table, questions) do
     questions =
       questions
-      |> Enum.group_by(fn(question) -> question.theme end)
+      |> Enum.group_by(fn question -> question.theme end)
 
-    Enum.reduce(questions, table, fn({theme, questions}, table) ->
+    Enum.reduce(questions, table, fn {theme, questions}, table ->
       table
       |> ThemeTitle.row(theme)
       |> QuestionAndAnswers.row(questions)
-     end)
+    end)
   end
 
   defp render(table) do

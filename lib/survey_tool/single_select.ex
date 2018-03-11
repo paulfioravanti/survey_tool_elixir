@@ -30,9 +30,9 @@ defmodule SurveyTool.SingleSelect do
     - `question`: The question whose `answers` to add the `answer` to.
     - `answer`: The answer to add to the question.
   """
-  @spec add_answer(SingleSelect.t, String.t) :: SingleSelect.t
+  @spec add_answer(SingleSelect.t(), String.t()) :: SingleSelect.t()
   def add_answer(question = %SingleSelect{answers: answers}, answer) do
-    answers = Map.update(answers, answer, 1, fn(count) -> count + 1 end)
+    answers = Map.update(answers, answer, 1, fn count -> count + 1 end)
     %SingleSelect{question | answers: answers}
   end
 end

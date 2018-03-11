@@ -12,7 +12,7 @@ defmodule SurveyTool.CLI.Report.Title do
 
     - `table`: The table to add the title to.
   """
-  @spec row(Table.t) :: Table.t
+  @spec row(Table.t()) :: Table.t()
   def row(table) do
     table
     |> Table.add_row([""])

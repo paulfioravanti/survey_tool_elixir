@@ -17,9 +17,9 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
     - `table`: The table to add the `questions` to.
     - `questions`: The set of questions and answers to add to the `table`.
   """
-  @spec row(Table.t, [RatingQuestion.t | SingleSelect.t]) :: Table.t
+  @spec row(Table.t(), [RatingQuestion.t() | SingleSelect.t()]) :: Table.t()
   def row(table, questions) do
-    Enum.reduce(questions, table, fn(question, table) ->
+    Enum.reduce(questions, table, fn question, table ->
       table
       |> Table.add_row([""])
       |> Table.add_row(["Q: #{question.text}"])
@@ -35,9 +35,10 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
 
     "Average Score: #{average_score} (#{length(scores)} responses submitted)"
   end
+
   defp formatted_answer(%SingleSelect{answers: answers}) do
     answers
-    |> Stream.map(fn({key, value}) -> "#{key} (#{value})" end)
+    |> Stream.map(fn {key, value} -> "#{key} (#{value})" end)
     |> Enum.sort()
     |> Enum.join(", ")
   end

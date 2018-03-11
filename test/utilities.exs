@@ -3,7 +3,7 @@ defmodule Utilities do
   # ANSI reset and newline appended to the end.
   def error_string(message) do
     message
-    |> error_string(fn(chardata) -> IO.ANSI.format(chardata, true) end)
+    |> error_string(fn chardata -> IO.ANSI.format(chardata, true) end)
     |> Kernel.<>("\n")
   end
 
@@ -11,7 +11,7 @@ defmodule Utilities do
   # ANSI reset or newline appended to the end.
   def error_fragment(message) do
     message
-    |> error_string(fn(chardata) -> IO.ANSI.format_fragment(chardata, true) end)
+    |> error_string(fn chardata -> IO.ANSI.format_fragment(chardata, true) end)
   end
 
   defp error_string(message, ansi_function) do

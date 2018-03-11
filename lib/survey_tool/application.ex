@@ -14,9 +14,10 @@ defmodule SurveyTool.Application do
 
     - `argv`: The list of command line arguments.
   """
-  @spec start([String.t] | []) :: :ok
+  @spec start([String.t()] | []) :: :ok
   def start(argv) do
     [questions: questions, responses: responses] = OptionParser.parse(argv)
+
     questions
     |> ContentParser.generate_survey()
     |> ContentParser.populate_survey(responses)

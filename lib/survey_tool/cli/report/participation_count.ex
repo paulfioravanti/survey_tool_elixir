@@ -16,7 +16,7 @@ defmodule SurveyTool.CLI.Report.ParticipationCount do
     - `table`: The table to add the participation count to.
     - `survey`: The survey from which to calculate the participation count.
   """
-  @spec row(Table.t, Survey.t) :: Table.t
+  @spec row(Table.t(), Survey.t()) :: Table.t()
   def row(table, survey) do
     content =
       survey
@@ -28,7 +28,7 @@ defmodule SurveyTool.CLI.Report.ParticipationCount do
 
   defp participation_count_row(survey) do
     "Participation Count:#{@spacer}" <>
-    "#{formatted_participation_count(survey)} Submitted"
+      "#{formatted_participation_count(survey)} Submitted"
   end
 
   defp formatted_participation_count(survey) do

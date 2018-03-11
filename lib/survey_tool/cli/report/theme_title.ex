@@ -16,12 +16,12 @@ defmodule SurveyTool.CLI.Report.ThemeTitle do
     - `table`: The table to add the theme title to.
     - `theme`: The name of the theme.
   """
-  @spec row(Table.t, String.t) :: Table.t
+  @spec row(Table.t(), String.t()) :: Table.t()
   def row(table, theme) do
     theme_divider =
       theme
       |> String.length()
-      |> (fn(length) -> String.duplicate(@divider, length) end).()
+      |> (fn length -> String.duplicate(@divider, length) end).()
 
     table
     |> Table.add_row([""])

@@ -2,7 +2,7 @@ defmodule VersionTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
 
-  @version_output Mix.Project.config[:version] <> "\n"
+  @version_output Mix.Project.config()[:version] <> "\n"
 
   describe "Version number output" do
     setup(%{argv: argv}) do

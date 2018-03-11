@@ -38,11 +38,12 @@ defmodule SurveyTool.RatingQuestion do
     - the answer is an integer
     - the answer falls with the accepted numerical range
   """
-  @spec add_answer(RatingQuestion.t, String.t) :: RatingQuestion.t
+  @spec add_answer(RatingQuestion.t(), String.t()) :: RatingQuestion.t()
   def add_answer(question = %RatingQuestion{}, ""), do: question
+
   def add_answer(question = %RatingQuestion{scores: scores}, score) do
     with score <- String.to_integer(score),
-         true <- score in (@min_score..@max_score) do
+         true <- score in @min_score..@max_score do
       %RatingQuestion{question | scores: [score | scores]}
     else
       _invalid_score ->
@@ -59,13 +60,15 @@ defmodule SurveyTool.RatingQuestion do
     - `question`: The question from which to get the scores to calculate
       the average score.
   """
-  @spec average_score(RatingQuestion.t) :: Decimal.t
+  @spec average_score(RatingQuestion.t()) :: Decimal.t()
   def average_score(_question = %RatingQuestion{scores: []}), do: nil
+
   def average_score(_question = %RatingQuestion{scores: scores}) do
     size =
       scores
       |> length()
       |> Decimal.new()
+
     scores
     |> Enum.sum()
     |> Decimal.new()
