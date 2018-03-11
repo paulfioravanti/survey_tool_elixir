@@ -32,7 +32,8 @@ defmodule SurveyTool.CLI.OptionParser do
 
     - `argv`: The list of command line arguments.
   """
-  @spec parse([String.t()]) :: [questions: String.t(), responses: String.t()]
+  @spec parse([String.t()]) ::
+          {:ok, questions: String.t(), responses: String.t()}
   def parse(argv) do
     argv
     |> OptionParser.parse(strict: @argument_types, aliases: @aliases)
