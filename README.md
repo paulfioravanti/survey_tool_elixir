@@ -8,8 +8,8 @@
 
 # CSV Survey Tool Developer Coding Test
 
-An [Elixir][] CLI application that parses and displays survey data from CSV
-files, and displays the results.
+An [Elixir][] CLI application that parses survey data from CSV files, and
+displays the results.
 
 ## Setup
 
