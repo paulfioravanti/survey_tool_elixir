@@ -30,7 +30,7 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   end
 
   defp percentage_row(percent) do
-    "Participation Percentage:#{@spacer}#{formatted_percentage(percent)}"
+    "Participation Percentage:" <> @spacer <> formatted_percentage(percent)
   end
 
   defp formatted_percentage(percent) do

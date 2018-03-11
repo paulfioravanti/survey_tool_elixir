@@ -18,17 +18,15 @@ defmodule SurveyTool.CLI.Report.ParticipationCount do
   """
   @spec row(Table.t(), Survey.t()) :: Table.t()
   def row(table, survey) do
-    content =
-      survey
-      |> participation_count_row()
+    content = participation_count_row(survey)
 
     table
     |> Table.add_row([content])
   end
 
   defp participation_count_row(survey) do
-    "Participation Count:#{@spacer}" <>
-      "#{formatted_participation_count(survey)} Submitted"
+    "Participation Count:" <>
+      @spacer <> formatted_participation_count(survey) <> " Submitted"
   end
 
   defp formatted_participation_count(survey) do
