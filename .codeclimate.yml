@@ -1,9 +1,5 @@
 version: 2
-engines:
+plugins:
   credo:
     enabled: true
     channel: "beta"
-ratings:
-  paths:
-  - "**.ex"
-  - "**.exs"
