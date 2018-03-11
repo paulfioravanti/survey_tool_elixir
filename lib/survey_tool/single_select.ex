@@ -11,15 +11,15 @@ defmodule SurveyTool.SingleSelect do
   An optional map of answers to their tally of occurances in a set
   of responses
   """
-  @type answers() :: %{required(String.t) => integer} | %{}
+  @type answers() :: %{required(String.t()) => integer} | %{}
   @typedoc "Optional string"
-  @type optional_string() :: String.t | nil
+  @type optional_string() :: String.t() | nil
   @typedoc "Single select question struct type."
   @type t() :: %SingleSelect{
-    answers: answers(),
-    text: optional_string(),
-    theme: optional_string()
-  }
+          answers: answers(),
+          text: optional_string(),
+          theme: optional_string()
+        }
 
   @doc """
   Adds an answer to a given question and keeps a tally of how
@@ -32,7 +32,10 @@ defmodule SurveyTool.SingleSelect do
   """
   @spec add_answer(SingleSelect.t(), String.t()) :: SingleSelect.t()
   def add_answer(question = %SingleSelect{answers: answers}, answer) do
-    answers = Map.update(answers, answer, 1, fn count -> count + 1 end)
+    answers =
+      answers
+      |> Map.update(answer, 1, fn count -> count + 1 end)
+
     %SingleSelect{question | answers: answers}
   end
 end

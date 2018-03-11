@@ -8,6 +8,10 @@ defmodule SurveyTool.ContentParser do
 
   @answers_range 3..-1
   @rows_per_chunk 1
+  @question_error_message """
+  Could not generate report. Responses file contained \
+  unknown question type of: \
+  """
   @timestamp_index 2
 
   @doc """
@@ -99,14 +103,14 @@ defmodule SurveyTool.ContentParser do
   defp to_question({:ok, row} = {:ok, %{"type" => "ratingquestion"}}) do
     %RatingQuestion{text: row["text"], theme: row["theme"]}
   end
+
   defp to_question({:ok, row} = {:ok, %{"type" => "singleselect"}}) do
     %SingleSelect{text: row["text"], theme: row["theme"]}
   end
+
   defp to_question({:ok, %{"type" => type}}) do
-    Console.output(
-      error: "Could not generate report. " <>
-             "Unknown question type '#{type}' found in responses file.",
-    )
-    throw :halt
+    Console.output(error: @question_error_message <> type)
+
+    throw(:halt)
   end
 end

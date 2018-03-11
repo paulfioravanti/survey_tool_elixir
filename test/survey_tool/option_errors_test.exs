@@ -13,13 +13,14 @@ defmodule OptionsErrorsTest do
     @error_message "questions option must be provided."
                    |> Utilities.error_string()
     setup do
-      expected_output = "#{@error_message}#{@help_output}"
-      {:ok, [expected: expected_output]}
+      {:ok, [expected: @error_message <> @help_output]}
     end
 
     @tag argv: []
-    test "an error message and the help message is output to stdout",
-         %{output: output, expected: expected} do
+    test "an error message and the help message is output to stdout", %{
+      output: output,
+      expected: expected
+    } do
       assert output == expected
     end
   end
@@ -29,20 +30,19 @@ defmodule OptionsErrorsTest do
                    |> Utilities.error_string()
 
     setup do
-      expected_output = "#{@error_message}#{@help_output}"
-      {:ok, [expected: expected_output]}
+      {:ok, [expected: @error_message <> @help_output]}
     end
 
     @tag argv: ["--questions"]
     test "using the long questions option, an error message and " <>
-         "the help message is output to stdout",
+           "the help message is output to stdout",
          %{output: output, expected: expected} do
       assert output == expected
     end
 
     @tag argv: ["-q"]
     test "using the short questions option, an error message and " <>
-         "the help message is output to stdout",
+           "the help message is output to stdout",
          %{output: output, expected: expected} do
       assert output == expected
     end
@@ -53,28 +53,23 @@ defmodule OptionsErrorsTest do
                    |> Utilities.error_string()
 
     setup do
-      expected_output = "#{@error_message}#{@help_output}"
-      {:ok, [expected: expected_output]}
+      {:ok, [expected: @error_message <> @help_output]}
     end
 
     @tag argv: [
-      "--questions",
-      "test/fixtures/valid_survey_questions.csv",
-      "--responses",
-    ]
+           "--questions",
+           "test/fixtures/valid_survey_questions.csv",
+           "--responses"
+         ]
     test "using the long responses option, an error message and " <>
-         "the help message is output to stdout",
+           "the help message is output to stdout",
          %{output: output, expected: expected} do
       assert output == expected
     end
 
-    @tag argv: [
-      "-q",
-      "test/fixtures/valid_survey_questions.csv",
-      "-r",
-    ]
+    @tag argv: ["-q", "test/fixtures/valid_survey_questions.csv", "-r"]
     test "using the short responses option, an error message and " <>
-         "the help message is output to stdout",
+           "the help message is output to stdout",
          %{output: output, expected: expected} do
       assert output == expected
     end
@@ -85,16 +80,14 @@ defmodule OptionsErrorsTest do
                    |> Utilities.error_string()
 
     setup do
-      expected_output = "#{@error_message}#{@help_output}"
-      {:ok, [expected: expected_output]}
+      {:ok, [expected: @error_message <> @help_output]}
     end
 
-    @tag argv: [
-      "--responses",
-      "test/fixtures/valid_survey_responses.csv",
-    ]
-    test "an error message and the help message is output to stdout",
-         %{output: output, expected: expected} do
+    @tag argv: ["--responses", "test/fixtures/valid_survey_responses.csv"]
+    test "an error message and the help message is output to stdout", %{
+      output: output,
+      expected: expected
+    } do
       assert output == expected
     end
   end

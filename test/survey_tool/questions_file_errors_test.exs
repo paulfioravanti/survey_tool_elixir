@@ -19,16 +19,15 @@ defmodule QuestionsFileErrorsTest do
 
   describe "Questions file with unknown question types" do
     @error_message """
-    Could not generate report.\s
-    Unknown question type 'unknown' found in responses file.
-    """
-    |> String.replace("\n", "")
-    |> Utilities.error_string()
+                   Could not generate report. \
+                   Responses file contained unknown question type of: unknown\
+                   """
+                   |> Utilities.error_string()
 
     @tag argv: [
-      "--questions",
-      "test/fixtures/questions/unknown_question_types.csv"
-    ]
+           "--questions",
+           "test/fixtures/questions/unknown_question_types.csv"
+         ]
     test "outputs an error message", %{output: output} do
       assert output =~ @error_message
     end

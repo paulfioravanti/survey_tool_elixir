@@ -10,13 +10,13 @@ defmodule SurveyTool.RatingQuestion do
   @typedoc "An optional list of integer scores"
   @type scores() :: [integer] | []
   @typedoc "Optional string"
-  @type optional_string() :: String.t | nil
+  @type optional_string() :: String.t() | nil
   @typedoc "Rating question struct type."
   @type t() :: %RatingQuestion{
-    scores: scores(),
-    text: optional_string(),
-    theme: optional_string()
-  }
+          scores: scores(),
+          text: optional_string(),
+          theme: optional_string()
+        }
 
   @max_score 5
   @min_score 1

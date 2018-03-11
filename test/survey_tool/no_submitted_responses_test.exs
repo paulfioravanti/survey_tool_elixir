@@ -12,11 +12,11 @@ defmodule NoSubmittedResponsesTest do
     end
 
     @tag argv: [
-      "--questions",
-      "test/fixtures/questions/no_submitted_questions.csv",
-      "--responses",
-      "test/fixtures/responses/no_submitted_responses.csv"
-    ]
+           "--questions",
+           "test/fixtures/questions/no_submitted_questions.csv",
+           "--responses",
+           "test/fixtures/responses/no_submitted_responses.csv"
+         ]
     test "a blank report is outputted to stdout", %{output: output} do
       assert output == @report_output
     end

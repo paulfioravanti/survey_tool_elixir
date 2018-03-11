@@ -6,6 +6,12 @@ defmodule SurveyTool.Application do
   alias SurveyTool.ContentParser
   alias SurveyTool.CLI.{Console, OptionParser, Report}
 
+  @file_error_message "Could not generate report: "
+  @argument_error_message """
+  Could not generate report. \
+  Check if your responses file fits your questions file.\
+  """
+
   @doc """
   Starts the survey tool, performs all operations, and handles any
   premature exiting of the program.
@@ -22,18 +28,14 @@ defmodule SurveyTool.Application do
     |> ContentParser.generate_survey()
     |> ContentParser.populate_survey(responses)
     |> Report.output()
+  rescue
+    error in File.Error ->
+      Console.output(error: @file_error_message <> Exception.message(error))
+
+    ArgumentError ->
+      Console.output(error: @argument_error_message)
   catch
     :halt ->
       :ok
-  rescue
-    error in File.Error ->
-      Console.output(
-        error: "Could not generate report: #{Exception.message(error)}"
-      )
-    ArgumentError ->
-      Console.output(
-        error: "Could not generate report. " <>
-               "Check if your responses file fits your questions file."
-      )
   end
 end

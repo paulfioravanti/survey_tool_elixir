@@ -6,6 +6,7 @@ defmodule SurveyTool.CLI.Report do
   alias TableRex.Table
   alias SurveyTool.Survey
   alias SurveyTool.CLI.Console
+
   alias SurveyTool.CLI.Report.{
     Header,
     ParticipationCount,

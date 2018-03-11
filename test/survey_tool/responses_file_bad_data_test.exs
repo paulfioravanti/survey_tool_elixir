@@ -12,11 +12,11 @@ defmodule ResponsesFileBadDataTest do
     end
 
     @tag argv: [
-      "--questions",
-      "test/fixtures/questions/only_rating_questions.csv",
-      "--responses",
-      "test/fixtures/responses/bad_rating_question_responses.csv"
-    ]
+           "--questions",
+           "test/fixtures/questions/only_rating_questions.csv",
+           "--responses",
+           "test/fixtures/responses/bad_rating_question_responses.csv"
+         ]
     test "only valid scores are considered 'submitted'", %{output: output} do
       assert output == @report_output
     end
