@@ -1,8 +1,10 @@
 [![Build Status][travis-badge]][travis-url]
-[![Code Climate][code-climate-badge]][code-climate-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
 [![Inline docs][inch-badge]][inch-url]
-[![Deps Status][hexfaktor-badge]][hexfaktor-url]
+
+[comment]: # (Some services aren't working, so for now, hide their badges.)
+[code-climate]: # ([![Code Climate][code-climate-badge]][code-climate-url])
+[deps-status]: # ([![Deps Status][hexfaktor-badge]][hexfaktor-url])
 
 # CSV Survey Tool Developer Coding Test
 
