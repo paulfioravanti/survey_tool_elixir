@@ -28,13 +28,12 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-if Mix.env == :dev do
+if Mix.env() == :dev do
   # Configures automated testing/linting
   config :mix_test_watch,
     clear: true,
     tasks: [
       "coveralls.html",
-      "dogma",
       "credo --strict",
       "docs",
       "inch --pedantic",

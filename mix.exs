@@ -14,13 +14,13 @@ defmodule SurveyTool.Mixfile do
       escript: escript(),
       name: "Survey Tool",
       preferred_cli_env: [
-        "coveralls": :test,
+        coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
       source_url: "https://github.com/paulfioravanti/survey_tool_elixir",
-      start_permanent: Mix.env == :prod,
+      start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
       version: "0.1.0"
     ]
@@ -42,8 +42,6 @@ defmodule SurveyTool.Mixfile do
       {:decimal, "~> 1.0"},
       # Mix tasks to simplify use of Dialyzer in Elixir projects.
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
-      # A code style linter for Elixir, powered by shame
-      {:dogma, "~> 0.1", only: [:dev, :test]},
       # Coverage report tool for Elixir
       {:excoveralls, "~> 0.7", only: :test},
       # ExDoc produces HTML and EPUB documentation for Elixir projects
