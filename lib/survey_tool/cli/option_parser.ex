@@ -75,12 +75,12 @@ defmodule SurveyTool.CLI.OptionParser do
 
   # questions and responses options specified and are both strings (valid)
   defp process({[questions: questions, responses: responses], _args, _inv}) do
-    [questions: questions, responses: responses]
+    {:ok, questions: questions, responses: responses}
   end
 
   # questions is a string and no responses string given (valid)
   defp process({[questions: questions], _args, _invalid}) do
-    [questions: questions, responses: responses_filepath(questions)]
+    {:ok, questions: questions, responses: responses_filepath(questions)}
   end
 
   # questions option is not specified (invalid)

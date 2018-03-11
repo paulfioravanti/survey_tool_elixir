@@ -22,7 +22,7 @@ defmodule SurveyTool.Application do
   """
   @spec start([String.t()] | []) :: :ok
   def start(argv) do
-    [questions: questions, responses: responses] = OptionParser.parse(argv)
+    {:ok, questions: questions, responses: responses} = OptionParser.parse(argv)
 
     questions
     |> ContentParser.generate_survey()
