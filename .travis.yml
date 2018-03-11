@@ -2,9 +2,9 @@ sudo: false
 dist: trusty
 language: elixir
 elixir:
-  - 1.5.2
+  - 1.6.3
 otp_release:
-  - 20.1
+  - 20.2.4
 cache:
   directories:
     - _build
@@ -16,8 +16,6 @@ script:
   - mix hex.outdated
   # Run tests and coverage on CI
   - mix coveralls.travis
-  # Run dogma code quality check
-  - mix dogma
   # Run credo code quality check
   - mix credo --strict
   # Run dialyzer to ensure specs are correct.
@@ -26,8 +24,8 @@ script:
   # slowing down the build while the PLT file gets rebuilt.
   # The --no-check option will have to be removed on a single build if Elixir
   # or Erlang versions update, but can then be re-instated.
-  # - mix dialyzer --halt-exit-status
-  - mix dialyzer --halt-exit-status --no-check
+  - mix dialyzer --halt-exit-status
+  # - mix dialyzer --halt-exit-status --no-check
 after_script:
   # Run inline documentation report
   - mix inch.report
