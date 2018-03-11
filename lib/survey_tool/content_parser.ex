@@ -58,7 +58,7 @@ defmodule SurveyTool.ContentParser do
   defp add_response(response, survey) do
     survey = increment(survey, :response_count)
 
-    case check_timestamp(response) do
+    case check_timestamp_validity(response) do
       {:ok, _date, _offset} ->
         survey
         |> increment(:participant_count)
@@ -94,7 +94,7 @@ defmodule SurveyTool.ContentParser do
     |> Enum.slice(@answers_range)
   end
 
-  defp check_timestamp([{:ok, response}]) do
+  defp check_timestamp_validity([{:ok, response}]) do
     response
     |> Enum.at(@timestamp_index)
     |> DateTime.from_iso8601()
@@ -110,7 +110,6 @@ defmodule SurveyTool.ContentParser do
 
   defp to_question({:ok, %{"type" => type}}) do
     Console.output(error: @question_error_message <> type)
-
     throw(:halt)
   end
 end
