@@ -3,8 +3,6 @@ defmodule SurveyTool.CLI.OptionParser do
   Parser for command line arguments.
   """
 
-  alias SurveyTool.CLI.Console
-
   @aliases [
     h: :help,
     q: :questions,
@@ -34,6 +32,8 @@ defmodule SurveyTool.CLI.OptionParser do
   """
   @spec parse([String.t()]) ::
           {:ok, questions: String.t(), responses: String.t()}
+          | {:info, String.t()}
+          | {:error, error: String.t(), info: String.t()}
   def parse(argv) do
     argv
     |> OptionParser.parse(strict: @argument_types, aliases: @aliases)
@@ -42,14 +42,12 @@ defmodule SurveyTool.CLI.OptionParser do
 
   # Specify to print help (valid)
   defp process({[help: true], _args, _invalid}) do
-    Console.output(@help)
-    throw(:halt)
+    {:info, @help}
   end
 
   # Specify to print version (valid)
   defp process({[version: true], _args, _invalid}) do
-    Console.output(@version)
-    throw(:halt)
+    {:info, @version}
   end
 
   # questions option is specified, but its value is nil (invalid)
@@ -86,12 +84,7 @@ defmodule SurveyTool.CLI.OptionParser do
 
   # questions option is not specified (invalid)
   defp process({_parsed, _args, _invalid}) do
-    Console.output(
-      error: "questions option must be provided.",
-      info: @help
-    )
-
-    throw(:halt)
+    {:error, error: "questions option must be provided.", info: @help}
   end
 
   defp responses_filepath(questions_filepath) do
@@ -102,20 +95,10 @@ defmodule SurveyTool.CLI.OptionParser do
   end
 
   defp handle_bad_questions do
-    Console.output(
-      error: "Path must be specified for questions option.",
-      info: @help
-    )
-
-    throw(:halt)
+    {:error, error: "Path must be specified for questions option.", info: @help}
   end
 
   defp handle_bad_responses do
-    Console.output(
-      error: "Path must be specified for responses option.",
-      info: @help
-    )
-
-    throw(:halt)
+    {:error, error: "Path must be specified for responses option.", info: @help}
   end
 end

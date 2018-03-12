@@ -3,7 +3,6 @@ defmodule SurveyTool.ContentParser do
   Responsible for parsing content in question and answer CSV files.
   """
 
-  alias SurveyTool.CLI.Console
   alias SurveyTool.{RatingQuestion, SingleSelect, Survey}
 
   @answers_range 3..-1
@@ -109,7 +108,6 @@ defmodule SurveyTool.ContentParser do
   end
 
   defp to_question({:ok, %{"type" => type}}) do
-    Console.output(error: @question_error_message <> type)
-    throw(:halt)
+    throw({:halt, error: @question_error_message <> type})
   end
 end

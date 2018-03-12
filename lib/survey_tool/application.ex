@@ -22,12 +22,16 @@ defmodule SurveyTool.Application do
   """
   @spec start([String.t()] | []) :: :ok
   def start(argv) do
-    {:ok, questions: questions, responses: responses} = OptionParser.parse(argv)
+    case OptionParser.parse(argv) do
+      {:ok, questions: questions, responses: responses} ->
+        questions
+        |> ContentParser.generate_survey()
+        |> ContentParser.populate_survey(responses)
+        |> Report.output()
 
-    questions
-    |> ContentParser.generate_survey()
-    |> ContentParser.populate_survey(responses)
-    |> Report.output()
+      {status, messages} when status in [:info, :error] ->
+        Console.output(messages)
+    end
   rescue
     error in File.Error ->
       Console.output(error: @file_error_message <> Exception.message(error))
@@ -35,7 +39,7 @@ defmodule SurveyTool.Application do
     ArgumentError ->
       Console.output(error: @argument_error_message)
   catch
-    :halt ->
-      :ok
+    {:halt, messages} ->
+      Console.output(messages)
   end
 end
