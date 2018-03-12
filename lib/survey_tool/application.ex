@@ -6,11 +6,11 @@ defmodule SurveyTool.Application do
   alias SurveyTool.ContentParser
   alias SurveyTool.CLI.{Console, OptionParser, Report}
 
-  @file_error_message "Could not generate report: "
   @argument_error_message """
   Could not generate report. \
   Check if your responses file fits your questions file.\
   """
+  @file_error_message "Could not generate report: "
 
   @doc """
   Starts the survey tool, performs all operations, and handles any
