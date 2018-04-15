@@ -14,7 +14,7 @@ displays the results.
 ## Setup
 
     $ git clone https://github.com/paulfioravanti/survey_tool_elixir.git
-    $ cd survey_tool
+    $ cd survey_tool_elixir
     $ mix deps.get
 
 ## Usage
