@@ -36,8 +36,8 @@ Other options can be seen by running the help command:
 
 ### Dependencies
 
-- Elixir 1.6.4
-- Erlang 20.3.2
+- Elixir 1.8.1
+- Erlang 21.3.3
 
 ### Environment
 
