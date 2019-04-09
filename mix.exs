@@ -10,7 +10,7 @@ defmodule SurveyTool.Mixfile do
         main: "SurveyTool",
         extras: ["README.md"]
       ],
-      elixir: "~> 1.6",
+      elixir: "~> 1.8",
       escript: escript(),
       name: "Survey Tool",
       preferred_cli_env: [
@@ -35,23 +35,23 @@ defmodule SurveyTool.Mixfile do
   defp deps do
     [
       # A static code analysis tool for the Elixir language
-      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
       # CSV Decoding and Encoding for Elixir
-      {:csv, "~> 2.1"},
+      {:csv, "~> 2.3"},
       # Arbitrary precision decimal arithmetic
-      {:decimal, "~> 1.0"},
+      {:decimal, "~> 1.7"},
       # Mix tasks to simplify use of Dialyzer in Elixir projects.
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # Coverage report tool for Elixir
-      {:excoveralls, "~> 0.7", only: :test},
+      {:excoveralls, "~> 0.10", only: :test},
       # ExDoc produces HTML and EPUB documentation for Elixir projects
-      {:ex_doc, "~> 0.14", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.20", only: [:dev, :test], runtime: false},
       # A Mix task that gives you hints where to improve your inline docs.
-      {:inch_ex, "~> 0.5", only: [:dev, :test]},
+      {:inch_ex, "~> 2.0", only: [:dev, :test]},
       # Automatically run your Elixir project's tests each time you save a file
-      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
       # Generate text-based tables for display
-      {:table_rex, "~> 1.0"}
+      {:table_rex, "~> 2.0"}
     ]
   end
 

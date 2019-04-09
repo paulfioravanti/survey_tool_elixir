@@ -3,8 +3,8 @@ defmodule SurveyTool.CLI.Report.ParticipationCount do
   Module representing the the participation count on a report.
   """
 
-  alias TableRex.Table
   alias SurveyTool.Survey
+  alias TableRex.Table
 
   @spacer String.duplicate("\s", 8)
 

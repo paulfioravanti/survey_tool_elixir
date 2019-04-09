@@ -10,6 +10,7 @@ defmodule SurveyTool.Survey do
 
   @typedoc "A list of potentially different question types."
   @type questions_list() :: [RatingQuestion.t() | SingleSelect.t()] | []
+
   @typedoc "Survey struct type."
   @type t() :: %Survey{
           participant_count: integer,

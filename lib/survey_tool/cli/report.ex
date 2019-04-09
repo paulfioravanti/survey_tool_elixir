@@ -3,8 +3,6 @@ defmodule SurveyTool.CLI.Report do
   Module representing a survey report.
   """
 
-  alias TableRex.Table
-  alias SurveyTool.Survey
   alias SurveyTool.CLI.Console
 
   alias SurveyTool.CLI.Report.{
@@ -15,6 +13,9 @@ defmodule SurveyTool.CLI.Report do
     ThemeTitle,
     Title
   }
+
+  alias SurveyTool.Survey
+  alias TableRex.Table
 
   @render_style [horizontal_style: :off, vertical_style: :off]
 

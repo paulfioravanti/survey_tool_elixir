@@ -12,8 +12,10 @@ defmodule SurveyTool.SingleSelect do
   of responses
   """
   @type answers() :: %{required(String.t()) => integer} | %{}
+
   @typedoc "Optional string"
   @type optional_string() :: String.t() | nil
+
   @typedoc "Single select question struct type."
   @type t() :: %SingleSelect{
           answers: answers(),
