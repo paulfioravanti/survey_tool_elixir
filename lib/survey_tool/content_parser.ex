@@ -50,7 +50,7 @@ defmodule SurveyTool.ContentParser do
     |> Path.expand()
     |> File.stream!()
     |> CSV.decode()
-    |> Stream.chunk(@rows_per_chunk)
+    |> Stream.chunk_every(@rows_per_chunk)
     |> Enum.reduce(survey, &add_response/2)
   end
 

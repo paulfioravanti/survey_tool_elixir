@@ -3,8 +3,8 @@ defmodule SurveyTool.Application do
   The entry point for the Survey Tool to run.
   """
 
+  alias SurveyTool.CLI
   alias SurveyTool.ContentParser
-  alias SurveyTool.CLI.{Console, OptionParser, Report}
 
   @argument_error_message """
   Could not generate report. \
@@ -22,24 +22,24 @@ defmodule SurveyTool.Application do
   """
   @spec start([String.t()] | []) :: :ok
   def start(argv) do
-    case OptionParser.parse(argv) do
+    case CLI.parse(argv) do
       {:ok, questions: questions, responses: responses} ->
         questions
         |> ContentParser.generate_survey()
         |> ContentParser.populate_survey(responses)
-        |> Report.output()
+        |> CLI.render_report()
 
       {status, messages} when status in [:info, :error] ->
-        Console.output(messages)
+        CLI.output(messages)
     end
   rescue
     error in File.Error ->
-      Console.output(error: @file_error_message <> Exception.message(error))
+      CLI.output(error: @file_error_message <> Exception.message(error))
 
     ArgumentError ->
-      Console.output(error: @argument_error_message)
+      CLI.output(error: @argument_error_message)
   catch
     {:halt, messages} ->
-      Console.output(messages)
+      CLI.output(messages)
   end
 end

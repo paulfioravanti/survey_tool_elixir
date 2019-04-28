@@ -26,8 +26,8 @@ defmodule SurveyTool.CLI.Report do
 
     - `survey`: The survey whose contents are to be output to the console.
   """
-  @spec output(Survey.t()) :: :ok
-  def output(survey) do
+  @spec render_report(Survey.t()) :: :ok
+  def render_report(survey) do
     Console.output("")
 
     Table.new()
