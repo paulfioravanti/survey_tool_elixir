@@ -1,8 +1,7 @@
-defmodule SurveyTool.CLI.Console do
-  @moduledoc """
-  Module concerned with outputting content to `stdout`.
-  """
+import Defmodulep, only: [defmodulep: 3]
 
+defmodulep SurveyTool.CLI.Console,
+  visible_to: [SurveyTool.CLI, SurveyTool.CLI.Report] do
   @typedoc "List of message types that can be outputted to console."
   @type messages_list() :: [error: String.t(), info: String.t()]
 

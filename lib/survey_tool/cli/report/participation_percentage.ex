@@ -1,8 +1,7 @@
-defmodule SurveyTool.CLI.Report.ParticipationPercentage do
-  @moduledoc """
-  Module representing the participation percentage on a report.
-  """
+import Defmodulep, only: [defmodulep: 3]
 
+defmodulep SurveyTool.CLI.Report.ParticipationPercentage,
+  visible_to: [SurveyTool.CLI.Report] do
   alias SurveyTool.Survey
   alias TableRex.Table
 

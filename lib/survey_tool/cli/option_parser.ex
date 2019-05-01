@@ -1,8 +1,6 @@
-defmodule SurveyTool.CLI.OptionParser do
-  @moduledoc """
-  Parser for command line arguments.
-  """
+import Defmodulep, only: [defmodulep: 3]
 
+defmodulep SurveyTool.CLI.OptionParser, visible_to: [SurveyTool.CLI] do
   @aliases [
     h: :help,
     q: :questions,

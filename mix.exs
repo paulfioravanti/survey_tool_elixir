@@ -40,6 +40,8 @@ defmodule SurveyTool.Mixfile do
       {:csv, "~> 2.3"},
       # Arbitrary precision decimal arithmetic
       {:decimal, "~> 1.7"},
+      # API for defining and requiring private modules
+      {:defmodulep, "~> 0.1", github: "josevalim/defmodulep"},
       # Mix tasks to simplify use of Dialyzer in Elixir projects.
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # Coverage report tool for Elixir

@@ -1,21 +1,16 @@
-defmodule SurveyTool.CLI.Report do
-  @moduledoc """
-  Module representing a survey report.
-  """
+import Defmodulep, only: [defmodulep: 3, requirep: 2]
 
-  alias SurveyTool.CLI.Console
-
-  alias SurveyTool.CLI.Report.{
-    Header,
-    ParticipationCount,
-    ParticipationPercentage,
-    QuestionAndAnswers,
-    ThemeTitle,
-    Title
-  }
-
+defmodulep SurveyTool.CLI.Report, visible_to: [SurveyTool.CLI] do
+  alias __MODULE__, as: Report
   alias SurveyTool.Survey
   alias TableRex.Table
+  requirep Report.Header, as: Header
+  requirep Report.ParticipationCount, as: ParticipationCount
+  requirep Report.ParticipationPercentage, as: ParticipationPercentage
+  requirep Report.QuestionAndAnswers, as: QuestionAndAnswers
+  requirep Report.ThemeTitle, as: ThemeTitle
+  requirep Report.Title, as: Title
+  requirep SurveyTool.CLI.Console, as: Console
 
   @render_style [horizontal_style: :off, vertical_style: :off]
 

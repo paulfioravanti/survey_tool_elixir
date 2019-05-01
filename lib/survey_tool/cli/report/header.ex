@@ -1,8 +1,6 @@
-defmodule SurveyTool.CLI.Report.Header do
-  @moduledoc """
-  Module representing the overall header for a report.
-  """
+import Defmodulep, only: [defmodulep: 3]
 
+defmodulep SurveyTool.CLI.Report.Header, visible_to: [SurveyTool.CLI.Report] do
   alias TableRex.Table
 
   @doc """

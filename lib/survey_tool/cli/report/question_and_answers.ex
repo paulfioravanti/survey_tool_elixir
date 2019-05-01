@@ -1,9 +1,7 @@
-defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
-  @moduledoc """
-  Module representing the body of a survey question
-  and its answers on a report.
-  """
+import Defmodulep, only: [defmodulep: 3]
 
+defmodulep SurveyTool.CLI.Report.QuestionAndAnswers,
+  visible_to: [SurveyTool.CLI.Report] do
   alias TableRex.Table
   alias SurveyTool.{RatingQuestion, SingleSelect}
 

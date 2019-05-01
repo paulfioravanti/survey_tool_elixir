@@ -1,8 +1,6 @@
-defmodule SurveyTool.CLI.Report.Title do
-  @moduledoc """
-  Module representing the overall title for a survey report.
-  """
+import Defmodulep, only: [defmodulep: 3]
 
+defmodulep SurveyTool.CLI.Report.Title, visible_to: [SurveyTool.CLI.Report] do
   alias TableRex.Table
 
   @doc """

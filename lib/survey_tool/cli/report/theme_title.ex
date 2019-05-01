@@ -1,9 +1,7 @@
-defmodule SurveyTool.CLI.Report.ThemeTitle do
-  @moduledoc """
-  Module representing the theme title of a set of questions
-  on a report.
-  """
+import Defmodulep, only: [defmodulep: 3]
 
+defmodulep SurveyTool.CLI.Report.ThemeTitle,
+  visible_to: [SurveyTool.CLI.Report] do
   alias TableRex.Table
 
   @divider "-"
