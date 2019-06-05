@@ -36,8 +36,8 @@ Other options can be seen by running the help command:
 
 ### Dependencies
 
-- Elixir 1.8.1
-- Erlang 21.3.3
+- Elixir 1.8.2 ([asdf-elixir pre-compiled version][]: 1.8.2-otp-22)
+- Erlang 22.0.1
 
 ### Environment
 
@@ -68,6 +68,9 @@ and open them:
     $ mix docs
     $ open doc/index.html
 
+**Note:** [inch-ex][] seems to currently have [an issue recognising
+documentation for types][inch_ex#64].
+
 ## Other
 
 I also wrote a version of this app in [Ruby][], which can be found
@@ -78,6 +81,7 @@ I also wrote a version of this app in [Ruby][], which can be found
 [![Contact][twitter-badge]][twitter-url]<br />
 [![Stack Overflow][stackoverflow-badge]][stackoverflow-url]
 
+[asdf-elixir pre-compiled version]: https://github.com/asdf-vm/asdf-elixir#elixir-precompiled-versions
 [code-climate-badge]: https://codeclimate.com/github/paulfioravanti/survey_tool_elixir/badges/gpa.svg
 [code-climate-url]: https://codeclimate.com/github/paulfioravanti/survey_tool_elixir
 [coveralls-badge]: https://coveralls.io/repos/github/paulfioravanti/survey_tool_elixir/badge.svg?branch=master
@@ -88,6 +92,8 @@ I also wrote a version of this app in [Ruby][], which can be found
 [ExUnit]: https://hexdocs.pm/ex_unit/ExUnit.html
 [hexfaktor-badge]: https://beta.hexfaktor.org/badge/all/github/paulfioravanti/survey_tool_elixir.svg
 [hexfaktor-url]: https://beta.hexfaktor.org/github/paulfioravanti/survey_tool_elixir
+[inch-ex]: https://github.com/rrrene/inch_ex
+[inch_ex#64]: https://github.com/rrrene/inch_ex/issues/64
 [inch-badge]: http://inch-ci.org/github/paulfioravanti/survey_tool_elixir.svg
 [inch-url]: http://inch-ci.org/github/paulfioravanti/survey_tool_elixir
 [`mix test.watch`]: https://github.com/lpil/mix-test.watch
