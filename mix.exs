@@ -43,7 +43,7 @@ defmodule SurveyTool.Mixfile do
       # Mix tasks to simplify use of Dialyzer in Elixir projects.
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # Coverage report tool for Elixir
-      {:excoveralls, "~> 0.10", only: :test},
+      {:excoveralls, "~> 0.11", only: :test},
       # ExDoc produces HTML and EPUB documentation for Elixir projects
       {:ex_doc, "~> 0.20", only: [:dev, :test], runtime: false},
       # A Mix task that gives you hints where to improve your inline docs.
