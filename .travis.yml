@@ -2,9 +2,9 @@ sudo: false
 dist: trusty
 language: elixir
 elixir:
-  - 1.8.2
+  - 1.9.0
 otp_release:
-  - 22.0.1
+  - 22.0.4
 cache:
   directories:
     - _build
@@ -24,8 +24,8 @@ script:
   # slowing down the build while the PLT file gets rebuilt.
   # The --no-check option will have to be removed on a single build if Elixir
   # or Erlang versions update, but can then be re-instated.
-  # - mix dialyzer --halt-exit-status
-  - mix dialyzer --halt-exit-status --no-check
+  - mix dialyzer --halt-exit-status
+  # - mix dialyzer --halt-exit-status --no-check
 after_script:
   # Run inline documentation report
   - mix inch.report

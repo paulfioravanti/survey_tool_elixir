@@ -10,7 +10,7 @@ defmodule SurveyTool.Mixfile do
         main: "SurveyTool",
         extras: ["README.md"]
       ],
-      elixir: "~> 1.8",
+      elixir: "~> 1.9",
       escript: escript(),
       name: "Survey Tool",
       preferred_cli_env: [
@@ -35,11 +35,11 @@ defmodule SurveyTool.Mixfile do
   defp deps do
     [
       # A static code analysis tool for the Elixir language
-      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.1", only: [:dev, :test], runtime: false},
       # CSV Decoding and Encoding for Elixir
       {:csv, "~> 2.3"},
       # Arbitrary precision decimal arithmetic
-      {:decimal, "~> 1.7"},
+      {:decimal, "~> 1.8"},
       # Mix tasks to simplify use of Dialyzer in Elixir projects.
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # Coverage report tool for Elixir
