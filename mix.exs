@@ -10,7 +10,7 @@ defmodule SurveyTool.Mixfile do
         main: "SurveyTool",
         extras: ["README.md"]
       ],
-      elixir: "~> 1.9",
+      elixir: "~> 1.15",
       escript: escript(),
       name: "Survey Tool",
       preferred_cli_env: [

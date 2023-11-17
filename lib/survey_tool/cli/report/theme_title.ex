@@ -18,10 +18,7 @@ defmodule SurveyTool.CLI.Report.ThemeTitle do
   """
   @spec row(Table.t(), String.t()) :: Table.t()
   def row(table, theme) do
-    theme_divider =
-      theme
-      |> String.length()
-      |> (fn length -> String.duplicate(@divider, length) end).()
+    theme_divider = String.duplicate(@divider, String.length(theme))
 
     table
     |> Table.add_row([""])

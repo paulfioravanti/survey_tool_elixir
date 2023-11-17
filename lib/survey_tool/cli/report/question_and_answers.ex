@@ -43,6 +43,8 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
     |> Enum.join(", ")
   end
 
+  defp formatted_average_score(nil), do: "0"
+
   defp formatted_average_score(score) do
     score
     |> Decimal.round(@rounding_precision)
