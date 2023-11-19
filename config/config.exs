@@ -37,6 +37,6 @@ if Mix.env() == :dev do
       "credo --strict",
       "docs",
       # "inch --pedantic"
-      "dialyzer --halt-exit-status"
+      "dialyzer"
     ]
 end
