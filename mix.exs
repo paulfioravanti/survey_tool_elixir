@@ -37,11 +37,11 @@ defmodule SurveyTool.Mixfile do
       # A static code analysis tool for the Elixir language
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       # CSV Decoding and Encoding for Elixir
-      {:csv, "~> 2.3"},
+      {:csv, "~> 3.2"},
       # Arbitrary precision decimal arithmetic
-      {:decimal, "~> 1.8"},
+      {:decimal, "~> 2.1"},
       # Mix tasks to simplify use of Dialyzer in Elixir projects.
-      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       # Coverage report tool for Elixir
       {:excoveralls, "~> 0.18", only: :test},
       # ExDoc produces HTML and EPUB documentation for Elixir projects
@@ -49,9 +49,9 @@ defmodule SurveyTool.Mixfile do
       # A Mix task that gives you hints where to improve your inline docs.
       {:inch_ex, "~> 2.0", only: [:dev, :test]},
       # Automatically run your Elixir project's tests each time you save a file
-      {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 1.1", only: :dev, runtime: false},
       # Generate text-based tables for display
-      {:table_rex, "~> 2.0"}
+      {:table_rex, "~> 4.0"}
     ]
   end
 
