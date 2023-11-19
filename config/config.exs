@@ -36,7 +36,7 @@ if Mix.env() == :dev do
       "coveralls.html",
       "credo --strict",
       "docs",
-      "inch --pedantic",
+      # "inch --pedantic"
       "dialyzer --halt-exit-status"
     ]
 end

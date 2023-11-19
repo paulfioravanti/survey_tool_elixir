@@ -61,7 +61,7 @@ defmodule SurveyTool.RatingQuestion do
       the average score.
   """
   @spec average_score(RatingQuestion.t()) :: Decimal.t()
-  def average_score(%RatingQuestion{scores: []}), do: nil
+  def average_score(%RatingQuestion{scores: []}), do: 0
 
   def average_score(%RatingQuestion{scores: scores}) do
     size =

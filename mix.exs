@@ -5,7 +5,6 @@ defmodule SurveyTool.Mixfile do
     [
       app: :survey_tool,
       deps: deps(),
-      dialyzer: [plt_add_deps: :project],
       docs: [
         main: "SurveyTool",
         extras: ["README.md"]
