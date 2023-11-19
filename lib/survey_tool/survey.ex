@@ -28,12 +28,8 @@ defmodule SurveyTool.Survey do
   """
   @spec participation_percentage(Survey.t()) :: Decimal.t()
   def participation_percentage(survey = %Survey{}) do
-    response_count =
-      survey.response_count
-      |> Decimal.new()
-
-    survey.participant_count
-    |> Decimal.new()
-    |> Decimal.div(response_count)
+    response_count = Decimal.new(survey.response_count)
+    participant_count = Decimal.new(survey.participant_count)
+    Decimal.div(participant_count, response_count)
   end
 end

@@ -3,8 +3,7 @@ defmodule SurveyTool do
   The entry point for the Survey Tool to run.
   """
 
-  alias SurveyTool.CLI
-  alias SurveyTool.SurveyParser
+  alias SurveyTool.{CLI, SurveyParser}
 
   @argument_error_message """
   Could not generate report. \
