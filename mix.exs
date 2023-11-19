@@ -35,7 +35,7 @@ defmodule SurveyTool.Mixfile do
   defp deps do
     [
       # A static code analysis tool for the Elixir language
-      {:credo, "~> 1.1", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       # CSV Decoding and Encoding for Elixir
       {:csv, "~> 2.3"},
       # Arbitrary precision decimal arithmetic
@@ -43,9 +43,9 @@ defmodule SurveyTool.Mixfile do
       # Mix tasks to simplify use of Dialyzer in Elixir projects.
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # Coverage report tool for Elixir
-      {:excoveralls, "~> 0.11", only: :test},
+      {:excoveralls, "~> 0.18", only: :test},
       # ExDoc produces HTML and EPUB documentation for Elixir projects
-      {:ex_doc, "~> 0.20", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.30", only: [:dev, :test], runtime: false},
       # A Mix task that gives you hints where to improve your inline docs.
       {:inch_ex, "~> 2.0", only: [:dev, :test]},
       # Automatically run your Elixir project's tests each time you save a file
