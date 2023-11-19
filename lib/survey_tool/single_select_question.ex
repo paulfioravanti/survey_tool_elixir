@@ -1,9 +1,9 @@
-defmodule SurveyTool.SingleSelect do
+defmodule SurveyTool.SingleSelectQuestion do
   @moduledoc """
   Module representing a single select question type question in a survey.
   """
 
-  alias __MODULE__, as: SingleSelect
+  alias __MODULE__, as: SingleSelectQuestion
 
   defstruct answers: %{}, text: nil, theme: nil
 
@@ -17,7 +17,7 @@ defmodule SurveyTool.SingleSelect do
   @type optional_string() :: String.t() | nil
 
   @typedoc "Single select question struct type."
-  @type t() :: %SingleSelect{
+  @type t() :: %SingleSelectQuestion{
           answers: answers(),
           text: optional_string(),
           theme: optional_string()
@@ -32,12 +32,10 @@ defmodule SurveyTool.SingleSelect do
     - `question`: The question whose `answers` to add the `answer` to.
     - `answer`: The answer to add to the question.
   """
-  @spec add_answer(SingleSelect.t(), String.t()) :: SingleSelect.t()
-  def add_answer(question = %SingleSelect{answers: answers}, answer) do
-    answers =
-      answers
-      |> Map.update(answer, 1, fn count -> count + 1 end)
-
-    %SingleSelect{question | answers: answers}
+  @spec add_answer(SingleSelectQuestion.t(), String.t())
+        :: SingleSelectQuestion.t()
+  def add_answer(question = %SingleSelectQuestion{answers: answers}, answer) do
+    answers = Map.update(answers, answer, 1, fn count -> count + 1 end)
+    %SingleSelectQuestion{question | answers: answers}
   end
 end

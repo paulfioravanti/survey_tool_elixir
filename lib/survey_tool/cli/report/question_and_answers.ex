@@ -5,7 +5,7 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
   """
 
   alias TableRex.Table
-  alias SurveyTool.{RatingQuestion, SingleSelect}
+  alias SurveyTool.{RatingQuestion, SingleSelectQuestion}
 
   @rounding_precision 1
 
@@ -17,7 +17,8 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
     - `table`: The table to add the `questions` to.
     - `questions`: The set of questions and answers to add to the `table`.
   """
-  @spec row(Table.t(), [RatingQuestion.t() | SingleSelect.t()]) :: Table.t()
+  @spec row(Table.t(), [RatingQuestion.t() | SingleSelectQuestion.t()]) ::
+          Table.t()
   def row(table, questions) do
     Enum.reduce(questions, table, fn question, table ->
       table
@@ -36,7 +37,7 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
     "Average Score: #{average_score} (#{length(scores)} responses submitted)"
   end
 
-  defp formatted_answer(%SingleSelect{answers: answers}) do
+  defp formatted_answer(%SingleSelectQuestion{answers: answers}) do
     answers
     |> Stream.map(fn {key, value} -> "#{key} (#{value})" end)
     |> Enum.sort()

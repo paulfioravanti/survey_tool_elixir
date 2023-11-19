@@ -3,7 +3,7 @@ defmodule SurveyTool.SurveyParser do
   Responsible for parsing content in question and answer CSV files.
   """
 
-  alias SurveyTool.{RatingQuestion, SingleSelect, Survey}
+  alias SurveyTool.{RatingQuestion, SingleSelectQuestion, Survey}
 
   @answers_range 3..-1
   @rows_per_chunk 1
@@ -104,7 +104,7 @@ defmodule SurveyTool.SurveyParser do
   end
 
   defp to_question({:ok, row} = {:ok, %{"type" => "singleselect"}}) do
-    %SingleSelect{text: row["text"], theme: row["theme"]}
+    %SingleSelectQuestion{text: row["text"], theme: row["theme"]}
   end
 
   defp to_question({:ok, %{"type" => type}}) do

@@ -4,12 +4,12 @@ defmodule SurveyTool.Survey do
   """
 
   alias __MODULE__, as: Survey
-  alias SurveyTool.{RatingQuestion, SingleSelect}
+  alias SurveyTool.{RatingQuestion, SingleSelectQuestion}
 
   defstruct participant_count: 0, questions: [], response_count: 0
 
   @typedoc "A list of potentially different question types."
-  @type questions_list() :: [RatingQuestion.t() | SingleSelect.t()] | []
+  @type questions_list() :: [RatingQuestion.t() | SingleSelectQuestion.t()] | []
 
   @typedoc "Survey struct type."
   @type t() :: %Survey{
