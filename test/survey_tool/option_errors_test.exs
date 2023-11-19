@@ -5,7 +5,7 @@ defmodule OptionsErrorsTest do
   @help_output "#{File.read!("lib/survey_tool/cli/help.txt")}\n"
 
   setup(%{argv: argv}) do
-    output = capture_io(fn -> SurveyTool.main(argv) end)
+    output = capture_io(fn -> SurveyTool.start(argv) end)
     {:ok, [output: output]}
   end
 

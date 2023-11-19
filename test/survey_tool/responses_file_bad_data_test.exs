@@ -7,7 +7,7 @@ defmodule ResponsesFileBadDataTest do
                    |> File.read!()
 
     setup(%{argv: argv}) do
-      output = capture_io(fn -> SurveyTool.main(argv) end)
+      output = capture_io(fn -> SurveyTool.start(argv) end)
       {:ok, [output: output]}
     end
 

@@ -7,7 +7,7 @@ defmodule NoSubmittedResponsesTest do
 
   describe "Generating a report when no responses are submitted" do
     setup(%{argv: argv}) do
-      output = capture_io(fn -> SurveyTool.main(argv) end)
+      output = capture_io(fn -> SurveyTool.start(argv) end)
       {:ok, [output: output]}
     end
 
