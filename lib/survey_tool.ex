@@ -4,7 +4,7 @@ defmodule SurveyTool do
   """
 
   alias SurveyTool.CLI
-  alias SurveyTool.ContentParser
+  alias SurveyTool.SurveyParser
 
   @argument_error_message """
   Could not generate report. \
@@ -25,8 +25,8 @@ defmodule SurveyTool do
     case CLI.parse(argv) do
       {:ok, questions: questions, responses: responses} ->
         questions
-        |> ContentParser.generate_survey()
-        |> ContentParser.populate_survey(responses)
+        |> SurveyParser.generate_survey()
+        |> SurveyParser.populate_survey(responses)
         |> CLI.render_report()
 
       {status, messages} when status in [:info, :error] ->

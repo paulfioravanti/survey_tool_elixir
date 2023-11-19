@@ -1,4 +1,4 @@
-defmodule SurveyTool.ContentParser do
+defmodule SurveyTool.SurveyParser do
   @moduledoc """
   Responsible for parsing content in question and answer CSV files.
   """
