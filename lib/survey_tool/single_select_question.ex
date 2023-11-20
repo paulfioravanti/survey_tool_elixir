@@ -35,7 +35,7 @@ defmodule SurveyTool.SingleSelectQuestion do
   @spec add_answer(SingleSelectQuestion.t(), String.t())
         :: SingleSelectQuestion.t()
   def add_answer(question = %SingleSelectQuestion{answers: answers}, answer) do
-    answers = Map.update(answers, answer, 1, fn count -> count + 1 end)
+    answers = Map.update(answers, answer, 1, &(&1 + 1))
     %SingleSelectQuestion{question | answers: answers}
   end
 end

@@ -64,14 +64,8 @@ defmodule SurveyTool.RatingQuestion do
   def average_score(%RatingQuestion{scores: []}), do: 0
 
   def average_score(%RatingQuestion{scores: scores}) do
-    size =
-      scores
-      |> length()
-      |> Decimal.new()
-
-    scores
-    |> Enum.sum()
-    |> Decimal.new()
-    |> Decimal.div(size)
+    size = Decimal.new(length(scores))
+    scores = Decimal.new(Enum.sum(scores))
+    Decimal.div(scores, size)
   end
 end

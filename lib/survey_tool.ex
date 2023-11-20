@@ -23,10 +23,7 @@ defmodule SurveyTool do
   def start(argv) do
     case CLI.parse(argv) do
       {:ok, questions: questions, responses: responses} ->
-        questions
-        |> SurveyParser.generate_survey()
-        |> SurveyParser.populate_survey(responses)
-        |> CLI.render_report()
+        render_report(questions, responses)
 
       {status, messages} when status in [:info, :error] ->
         CLI.output(messages)
@@ -40,5 +37,12 @@ defmodule SurveyTool do
   catch
     {:halt, messages} ->
       CLI.output(messages)
+  end
+
+  defp render_report(questions, responses) do
+    questions
+    |> SurveyParser.generate_survey()
+    |> SurveyParser.populate_survey(responses)
+    |> CLI.render_report()
   end
 end

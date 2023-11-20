@@ -11,6 +11,8 @@ defmodule SurveyTool.SurveyParser do
   Could not generate report. Responses file contained \
   unknown question type of: \
   """
+  @rating_question "ratingquestion"
+  @single_select_question "singleselect"
   @timestamp_index 2
 
   @doc """
@@ -24,14 +26,7 @@ defmodule SurveyTool.SurveyParser do
   """
   @spec generate_survey(String.t()) :: Survey.t()
   def generate_survey(csv_filepath) do
-    questions =
-      csv_filepath
-      |> Path.expand()
-      |> File.stream!()
-      |> CSV.decode(headers: true)
-      |> Enum.map(&to_question/1)
-
-    %Survey{questions: questions}
+    %Survey{questions: generate_survey_questions(csv_filepath)}
   end
 
   @doc """
@@ -47,11 +42,22 @@ defmodule SurveyTool.SurveyParser do
   @spec populate_survey(Survey.t(), String.t()) :: Survey.t()
   def populate_survey(survey, csv_filepath) do
     csv_filepath
-    |> Path.expand()
-    |> File.stream!()
-    |> CSV.decode()
+    |> decode_csv(headers: false)
     |> Stream.chunk_every(@rows_per_chunk)
     |> Enum.reduce(survey, &add_response/2)
+  end
+
+  defp generate_survey_questions(csv_filepath) do
+    csv_filepath
+    |> decode_csv(headers: true)
+    |> Enum.map(&to_question/1)
+  end
+
+  defp decode_csv(csv_filepath, headers: headers) do
+    csv_filepath
+    |> Path.expand()
+    |> File.stream!()
+    |> CSV.decode(headers: headers)
   end
 
   defp add_response(response, survey) do
@@ -59,39 +65,36 @@ defmodule SurveyTool.SurveyParser do
 
     case check_timestamp_validity(response) do
       {:ok, _date, _offset} ->
-        survey
-        |> increment(:participant_count)
-        |> populate_answers(response)
+        add_valid_response(survey, response)
 
       {:error, _message} ->
         survey
     end
   end
 
-  defp populate_answers(survey, row) do
-    answered_questions =
-      survey.questions
-      |> Stream.zip(answers(row))
-      |> Enum.map(&add_answer/1)
+  defp add_valid_response(survey, response) do
+    survey
+    |> increment(:participant_count)
+    |> populate_answers(response)
+  end
 
-    %Survey{survey | questions: answered_questions}
+  defp populate_answers(survey, response) do
+    %Survey{survey | questions: generate_answered_questions(survey, response)}
+  end
+
+  defp generate_answered_questions(survey, response) do
+    survey.questions
+    |> Stream.zip(answers(response))
+    |> Enum.map(&add_answer/1)
   end
 
   defp add_answer({question, answer}) do
-    question
-    |> question.__struct__.add_answer(answer)
+    question.__struct__.add_answer(question, answer)
   end
 
-  defp increment(survey, key) do
-    Map.update!(survey, key, fn current_value ->
-      current_value + 1
-    end)
-  end
+  defp increment(survey, key), do: Map.update!(survey, key, &(&1 + 1))
 
-  defp answers([{:ok, row}]) do
-    row
-    |> Enum.slice(@answers_range)
-  end
+  defp answers([{:ok, response}]), do: Enum.slice(response, @answers_range)
 
   defp check_timestamp_validity([{:ok, response}]) do
     response
@@ -99,12 +102,16 @@ defmodule SurveyTool.SurveyParser do
     |> DateTime.from_iso8601()
   end
 
-  defp to_question({:ok, row} = {:ok, %{"type" => "ratingquestion"}}) do
-    %RatingQuestion{text: row["text"], theme: row["theme"]}
+  defp to_question(
+    {:ok, response} = {:ok, %{"type" => @rating_question}}
+  ) do
+    %RatingQuestion{text: response["text"], theme: response["theme"]}
   end
 
-  defp to_question({:ok, row} = {:ok, %{"type" => "singleselect"}}) do
-    %SingleSelectQuestion{text: row["text"], theme: row["theme"]}
+  defp to_question(
+    {:ok, response} = {:ok, %{"type" => @single_select_question}}
+  ) do
+    %SingleSelectQuestion{text: response["text"], theme: response["theme"]}
   end
 
   defp to_question({:ok, %{"type" => type}}) do
