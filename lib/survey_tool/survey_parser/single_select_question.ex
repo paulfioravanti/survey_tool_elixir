@@ -1,4 +1,4 @@
-defmodule SurveyTool.SingleSelectQuestion do
+defmodule SurveyTool.SurveyParser.SingleSelectQuestion do
   @moduledoc """
   Module representing a single select question type question in a survey.
   """

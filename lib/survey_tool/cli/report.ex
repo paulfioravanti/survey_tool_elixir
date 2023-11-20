@@ -14,7 +14,7 @@ defmodule SurveyTool.CLI.Report do
     Title
   }
 
-  alias SurveyTool.Survey
+  alias SurveyTool.SurveyParser.Survey
   alias TableRex.Table
 
   @render_style [horizontal_style: :off, vertical_style: :off]

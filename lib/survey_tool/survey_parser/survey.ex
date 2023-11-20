@@ -1,10 +1,10 @@
-defmodule SurveyTool.Survey do
+defmodule SurveyTool.SurveyParser.Survey do
   @moduledoc """
   Module representing a survey with questions and responses.
   """
 
   alias __MODULE__, as: Survey
-  alias SurveyTool.{RatingQuestion, SingleSelectQuestion}
+  alias SurveyTool.SurveyParser.{RatingQuestion, SingleSelectQuestion}
 
   defstruct participant_count: 0, questions: [], response_count: 0
 

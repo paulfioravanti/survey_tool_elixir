@@ -1,4 +1,4 @@
-defmodule SurveyTool.RatingQuestion do
+defmodule SurveyTool.SurveyParser.RatingQuestion do
   @moduledoc """
   Module representing a rating question type question in a survey.
   """

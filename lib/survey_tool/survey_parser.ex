@@ -3,7 +3,7 @@ defmodule SurveyTool.SurveyParser do
   Responsible for parsing content in question and answer CSV files.
   """
 
-  alias SurveyTool.{RatingQuestion, SingleSelectQuestion, Survey}
+  alias SurveyTool.SurveyParser.{RatingQuestion, SingleSelectQuestion, Survey}
 
   @answers_range 3..-1
   @rows_per_chunk 1

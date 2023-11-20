@@ -3,7 +3,7 @@ defmodule SurveyTool.CLI.Report.ParticipationPercentage do
   Module representing the participation percentage on a report.
   """
 
-  alias SurveyTool.Survey
+  alias SurveyTool.SurveyParser.Survey
   alias TableRex.Table
 
   @percent_multiplier Decimal.new(100)

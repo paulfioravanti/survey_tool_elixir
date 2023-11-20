@@ -5,7 +5,7 @@ defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
   """
 
   alias TableRex.Table
-  alias SurveyTool.{RatingQuestion, SingleSelectQuestion}
+  alias SurveyTool.SurveyParser.{RatingQuestion, SingleSelectQuestion}
 
   @rounding_precision 1
 
