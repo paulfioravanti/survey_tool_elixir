@@ -1,7 +1,6 @@
 defmodule SurveyTool.Report.ThemeTitle do
   @moduledoc """
-  Module representing the theme title of a set of questions
-  on a report.
+  Module representing the theme title of a set of questions on a report.
   """
 
   alias TableRex.Table

@@ -3,8 +3,10 @@ defmodule SurveyTool.Report.ParticipationPercentage do
   Module representing the participation percentage on a report.
   """
 
-  alias SurveyTool.SurveyParser.Survey
+  alias SurveyTool.SurveyParser
   alias TableRex.Table
+
+  @type survey :: SurveyParser.survey
 
   @percent_multiplier Decimal.new(100)
   @rounding_precision 2
@@ -18,15 +20,15 @@ defmodule SurveyTool.Report.ParticipationPercentage do
     - `table`: The table to add the participation percentage to.
     - `survey`: The survey from which to calculate the participation percentage.
   """
-  @spec row(Table.t(), Survey.t()) :: Table.t()
+  @spec row(Table.t(), survey) :: Table.t()
   def row(table, survey) do
-    content =
-      survey
-      |> Survey.participation_percentage()
-      |> percentage_row()
+    Table.add_row(table, [content(survey)])
+  end
 
-    table
-    |> Table.add_row([content])
+  defp content(survey) do
+    survey
+    |> SurveyParser.participation_percentage()
+    |> percentage_row()
   end
 
   defp percentage_row(percent) do

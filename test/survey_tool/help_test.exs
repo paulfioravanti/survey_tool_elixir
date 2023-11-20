@@ -9,7 +9,7 @@ defmodule HelpTest do
 
   describe "Help output" do
     setup(%{argv: argv}) do
-      output = capture_io(fn -> SurveyTool.start(argv) end)
+      output = capture_io(fn -> SurveyTool.main(argv) end)
       {:ok, [output: output]}
     end
 

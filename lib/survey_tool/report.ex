@@ -3,7 +3,7 @@ defmodule SurveyTool.Report do
   Module representing a survey report.
   """
 
-  alias SurveyTool.CLI.Console
+  alias SurveyTool.CLI
 
   alias SurveyTool.Report.{
     Header,
@@ -26,16 +26,16 @@ defmodule SurveyTool.Report do
 
     - `survey`: The survey whose contents are to be output to the console.
   """
-  @spec render_report(Survey.t()) :: :ok
-  def render_report(survey) do
-    Console.output("")
+  @spec render(Survey.t()) :: :ok
+  def render(survey) do
+    CLI.output("")
 
     Table.new()
     |> Header.row()
     |> ParticipationPercentage.row(survey)
     |> ParticipationCount.row(survey)
     |> survey_body(survey)
-    |> render()
+    |> render_table()
   end
 
   defp survey_body(table, %Survey{participant_count: count}) when count < 1 do
@@ -49,20 +49,20 @@ defmodule SurveyTool.Report do
   end
 
   defp add_content(table, questions) do
-    questions =
-      questions
-      |> Enum.group_by(fn question -> question.theme end)
-
-    Enum.reduce(questions, table, fn {theme, questions}, table ->
-      table
-      |> ThemeTitle.row(theme)
-      |> QuestionAndAnswers.row(questions)
-    end)
+    questions
+    |> Enum.group_by(&(&1.theme))
+    |> Enum.reduce(table, &to_responses_row/2)
   end
 
-  defp render(table) do
+  defp to_responses_row({theme, questions}, table) do
+    table
+    |> ThemeTitle.row(theme)
+    |> QuestionAndAnswers.row(questions)
+  end
+
+  defp render_table(table) do
     table
     |> Table.render!(@render_style)
-    |> Console.output()
+    |> CLI.output()
   end
 end

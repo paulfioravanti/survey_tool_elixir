@@ -15,6 +15,32 @@ defmodule SurveyTool.SurveyParser do
   @single_select_question "singleselect"
   @timestamp_index 2
 
+  @type survey :: Survey.t()
+  @type rating_question :: RatingQuestion.t()
+  @type single_select_question :: SingleSelectQuestion.t()
+
+  @doc """
+  Delegates to `SurveyTool.SurveyParser.RatingQuestion.average_score()` to
+  calculate the average score for a given question.
+
+  ## Parameters
+
+    - `question`: The question from which to get the scores to calculate
+      the average score.
+  """
+  defdelegate average_score(question), to: RatingQuestion
+
+  @doc """
+  Delegates to `SurveyTool.SurveyParser.Survey.participation_percentage()` to
+  calculate the percentage of responses in the survey that are considered to be
+  participated.
+
+  ## Parameters
+
+    - `survey`: The survey whose percentage to calculate
+  """
+  defdelegate participation_percentage(survey), to: Survey
+
   @doc """
   Reads and parses the set of questions from a given CSV file
   and initialises a `%Survey{}` struct to hold the resulting list

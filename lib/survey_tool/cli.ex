@@ -3,7 +3,7 @@ defmodule SurveyTool.CLI do
   The CLI context boundary.
   """
 
-  alias SurveyTool.CLI.{Console, OptionParser, Report}
+  alias SurveyTool.CLI.{Console, OptionParser}
 
   @doc """
   Delegates to `SurveyTool.CLI.Console.output/1` to format a message or list

@@ -19,8 +19,8 @@ defmodule SurveyTool do
 
     - `argv`: The list of command line arguments.
   """
-  @spec start([String.t()] | []) :: :ok
-  def start(argv) do
+  @spec main([String.t()] | []) :: :ok
+  def main(argv) do
     case CLI.parse(argv) do
       {:ok, questions: questions, responses: responses} ->
         render_report(questions, responses)
@@ -43,6 +43,6 @@ defmodule SurveyTool do
     questions
     |> SurveyParser.generate_survey()
     |> SurveyParser.populate_survey(responses)
-    |> Report.render_report()
+    |> Report.render()
   end
 end

@@ -5,7 +5,7 @@ defmodule SuccessfulReportGenerationTest do
   @report_output File.read!("test/fixtures/output/valid_survey_output.txt")
 
   setup(%{argv: argv}) do
-    output = capture_io(fn -> SurveyTool.start(argv) end)
+    output = capture_io(fn -> SurveyTool.main(argv) end)
     {:ok, [output: output]}
   end
 

@@ -16,9 +16,7 @@ defmodule SurveyTool.CLI.OptionParser do
     version: :boolean
   ]
   @filetype_regex ~r/(?=[.].+\z)/
-  @help "help.txt"
-        |> Path.expand(__DIR__)
-        |> File.read!()
+  @help File.read!(Path.expand("help.txt", __DIR__))
   @version Mix.Project.config()[:version]
 
   @doc """
