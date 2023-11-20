@@ -8,8 +8,7 @@ defmodule QuestionsFileErrorsTest do
   end
 
   describe "Non-existent Questions File" do
-    @error_message "Could not generate report: "
-                   |> Utilities.error_fragment()
+    @error_message Utilities.error_fragment("Could not generate report: ")
 
     @tag argv: ["--questions", "non_existent_survey_questions.csv"]
     test "outputs an error message", %{output: output} do
@@ -18,11 +17,12 @@ defmodule QuestionsFileErrorsTest do
   end
 
   describe "Questions file with unknown question types" do
-    @error_message """
-                   Could not generate report. \
-                   Responses file contained unknown question type of: unknown\
-                   """
-                   |> Utilities.error_string()
+    @error_message Utilities.error_string(
+      """
+      Could not generate report. \
+      Responses file contained unknown question type of: unknown\
+      """
+    )
 
     @tag argv: [
            "--questions",

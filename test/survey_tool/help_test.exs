@@ -2,10 +2,7 @@ defmodule HelpTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
 
-  @help_output "lib/survey_tool/cli/help.txt"
-               |> Path.expand()
-               |> File.read!()
-               |> Kernel.<>("\n")
+  @help_output File.read!(Path.expand("lib/survey_tool/cli/help.txt")) <> "\n"
 
   describe "Help output" do
     setup(%{argv: argv}) do
