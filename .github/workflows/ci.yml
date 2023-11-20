@@ -1,0 +1,61 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+concurrency:
+  group: ci-tests-${{ github.ref }}-1
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MIX_ENV: test
+    strategy:
+      matrix:
+        elixir: ['1.15.7']
+        otp: ['26.1.2']
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ matrix.otp }}
+          elixir-version: ${{ matrix.elixir }}
+
+      - name: Get deps cache
+        uses: actions/cache@v2
+        with:
+          path: deps/
+          key: deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
+
+      - name: Get build cache
+        uses: actions/cache@v2
+        with:
+          path: _build/test/
+          key: build-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
+
+      - name: Install Dependencies
+        run: mix deps.get
+
+      - name: Check Dependencies
+        run: mix hex.outdated
+
+      - name: Run Tests
+        run: mix test
+
+      - name: Run code quality check
+        run: mix credo --strict
+
+      # NOTE: --no-check option added to skip check on whether PLT file needs to
+      # be updated. The version in the cached _build file will be used, hence
+      # not slowing down the build while the PLT file gets rebuilt.
+      # The --no-check option will have to be removed on a single build if
+      # Elixir or Erlang versions update, but can then be re-instated.
+      - name: Run Dialyzer
+        run: mix dialyzer --halt-exit-status --no-check

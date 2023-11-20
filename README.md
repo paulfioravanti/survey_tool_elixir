@@ -1,5 +1,4 @@
-[![Build Status][travis-badge]][travis-url]
-[![Coverage Status][coveralls-badge]][coveralls-url]
+[![Build Status][Build Status image]][Build Status url]
 
 # CSV Survey Tool Developer Coding Test
 
@@ -83,8 +82,6 @@ I also wrote a version of this app in [Ruby][], which can be found
 [here][survey-tool-ruby].
 
 [asdf-elixir pre-compiled version]: https://github.com/asdf-vm/asdf-elixir#elixir-precompiled-versions
-[coveralls-badge]: https://coveralls.io/repos/github/paulfioravanti/survey_tool_elixir/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/paulfioravanti/survey_tool_elixir?branch=master
 [Elixir]: https://github.com/elixir-lang/elixir
 [ExCoveralls]: https://github.com/parroty/excoveralls
 [ExDoc]: https://github.com/elixir-lang/ex_doc
@@ -92,8 +89,8 @@ I also wrote a version of this app in [Ruby][], which can be found
 [`mix test.watch`]: https://github.com/lpil/mix-test.watch
 [Ruby]: https://github.com/ruby/ruby
 [survey-tool-ruby]: https://github.com/paulfioravanti/survey_tool_ruby
-[travis-badge]: https://travis-ci.org/paulfioravanti/survey_tool_elixir.svg?branch=master
-[travis-url]: https://travis-ci.org/paulfioravanti/survey_tool_elixir
+[Build Status image]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml/badge.svg
+[Build Status url]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml
 
 ---
 
