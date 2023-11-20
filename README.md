@@ -1,10 +1,5 @@
 [![Build Status][travis-badge]][travis-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
-[![Inline docs][inch-badge]][inch-url]
-
-[comment]: # (Some services aren't working, so for now, hide their badges.)
-[code-climate]: # ([![Code Climate][code-climate-badge]][code-climate-url])
-[deps-status]: # ([![Deps Status][hexfaktor-badge]][hexfaktor-url])
 
 # CSV Survey Tool Developer Coding Test
 
@@ -13,15 +8,19 @@ displays the results.
 
 ## Setup
 
-    $ git clone https://github.com/paulfioravanti/survey_tool_elixir.git
-    $ cd survey_tool_elixir
-    $ mix deps.get
+```console
+git clone https://github.com/paulfioravanti/survey_tool_elixir.git
+cd survey_tool_elixir
+mix deps.get
+```
 
 ## Usage
 
 Run the application with the following command:
 
-    $ bin/survey-tool -q questions.csv [-r responses.csv]
+```console
+bin/survey-tool -q questions.csv [-r responses.csv]
+```
 
 If the survey responses CSV file is _not_ specified, it will attempt to be
 inferred.  For example, if the questions CSV file is named
@@ -30,7 +29,9 @@ inferred.  For example, if the questions CSV file is named
 
 Other options can be seen by running the help command:
 
-    $ bin/survey-tool -h
+```console
+bin/survey-tool -h
+```
 
 ## Development
 
@@ -45,66 +46,54 @@ Heavy use of [`mix test.watch`][] was made during development to ensure code
 quality, so I highly recommend having the following commands running in other
 terminal windows:
 
-    $ mix test.watch
-    $ iex -S mix
+```console
+mix test.watch
+iex -S mix
+```
 
 ## Tests
 
 [ExUnit][] was used for the tests, which can be run with the following command:
 
-    $ mix test
+```console
+mix test
+```
 
 ## Coverage Report
 
 View the [ExCoveralls][] test coverage report:
 
-    $ open cover/excoveralls.html
+```console
+open cover/excoveralls.html
+```
 
 ## Application Documentation
 
 Generate the [ExDoc][] documentation (if not already done by running the tests)
 and open them:
 
-    $ mix docs
-    $ open doc/index.html
-
-**Note:** [inch-ex][] seems to currently have [an issue recognising
-documentation for types][inch_ex#64].
+```console
+mix docs
+open doc/index.html
+```
 
 ## Other
 
 I also wrote a version of this app in [Ruby][], which can be found
 [here][survey-tool-ruby].
 
-## Social
-
-[![Contact][twitter-badge]][twitter-url]<br />
-[![Stack Overflow][stackoverflow-badge]][stackoverflow-url]
-
 [asdf-elixir pre-compiled version]: https://github.com/asdf-vm/asdf-elixir#elixir-precompiled-versions
-[code-climate-badge]: https://codeclimate.com/github/paulfioravanti/survey_tool_elixir/badges/gpa.svg
-[code-climate-url]: https://codeclimate.com/github/paulfioravanti/survey_tool_elixir
 [coveralls-badge]: https://coveralls.io/repos/github/paulfioravanti/survey_tool_elixir/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/paulfioravanti/survey_tool_elixir?branch=master
 [Elixir]: https://github.com/elixir-lang/elixir
 [ExCoveralls]: https://github.com/parroty/excoveralls
 [ExDoc]: https://github.com/elixir-lang/ex_doc
 [ExUnit]: https://hexdocs.pm/ex_unit/ExUnit.html
-[hexfaktor-badge]: https://beta.hexfaktor.org/badge/all/github/paulfioravanti/survey_tool_elixir.svg
-[hexfaktor-url]: https://beta.hexfaktor.org/github/paulfioravanti/survey_tool_elixir
-[inch-ex]: https://github.com/rrrene/inch_ex
-[inch_ex#64]: https://github.com/rrrene/inch_ex/issues/64
-[inch-badge]: http://inch-ci.org/github/paulfioravanti/survey_tool_elixir.svg
-[inch-url]: http://inch-ci.org/github/paulfioravanti/survey_tool_elixir
 [`mix test.watch`]: https://github.com/lpil/mix-test.watch
 [Ruby]: https://github.com/ruby/ruby
-[stackoverflow-badge]: http://stackoverflow.com/users/flair/567863.png
-[stackoverflow-url]: http://stackoverflow.com/users/567863/paul-fioravanti
 [survey-tool-ruby]: https://github.com/paulfioravanti/survey_tool_ruby
 [travis-badge]: https://travis-ci.org/paulfioravanti/survey_tool_elixir.svg?branch=master
 [travis-url]: https://travis-ci.org/paulfioravanti/survey_tool_elixir
-[twitter-badge]: https://img.shields.io/badge/contact-%40paulfioravanti-blue.svg
-[twitter-url]: https://twitter.com/paulfioravanti
 
 ---
 
