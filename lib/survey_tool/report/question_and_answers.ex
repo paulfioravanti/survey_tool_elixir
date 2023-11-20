@@ -1,4 +1,4 @@
-defmodule SurveyTool.CLI.Report.QuestionAndAnswers do
+defmodule SurveyTool.Report.QuestionAndAnswers do
   @moduledoc """
   Module representing the body of a survey question
   and its answers on a report.

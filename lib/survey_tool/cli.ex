@@ -24,14 +24,4 @@ defmodule SurveyTool.CLI do
     - `argv`: The list of command line arguments.
   """
   defdelegate parse(argv), to: OptionParser
-
-  @doc """
-  Delegates to `SurveyTool.CLI.Report.render_report/1` to output the report
-  content to the console.
-
-  ## Parameters
-
-    - `survey`: The survey whose contents are to be output to the console.
-  """
-  defdelegate render_report(survey), to: Report
 end

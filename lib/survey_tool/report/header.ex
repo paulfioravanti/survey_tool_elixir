@@ -1,4 +1,4 @@
-defmodule SurveyTool.CLI.Report.Header do
+defmodule SurveyTool.Report.Header do
   @moduledoc """
   Module representing the overall header for a report.
   """

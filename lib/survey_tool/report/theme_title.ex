@@ -1,4 +1,4 @@
-defmodule SurveyTool.CLI.Report.ThemeTitle do
+defmodule SurveyTool.Report.ThemeTitle do
   @moduledoc """
   Module representing the theme title of a set of questions
   on a report.

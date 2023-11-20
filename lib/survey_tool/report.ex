@@ -1,11 +1,11 @@
-defmodule SurveyTool.CLI.Report do
+defmodule SurveyTool.Report do
   @moduledoc """
   Module representing a survey report.
   """
 
   alias SurveyTool.CLI.Console
 
-  alias SurveyTool.CLI.Report.{
+  alias SurveyTool.Report.{
     Header,
     ParticipationCount,
     ParticipationPercentage,

@@ -1,4 +1,4 @@
-defmodule SurveyTool.CLI.Report.ParticipationCount do
+defmodule SurveyTool.Report.ParticipationCount do
   @moduledoc """
   Module representing the the participation count on a report.
   """

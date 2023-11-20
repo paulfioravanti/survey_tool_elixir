@@ -3,7 +3,7 @@ defmodule SurveyTool do
   The entry point for the Survey Tool to run.
   """
 
-  alias SurveyTool.{CLI, SurveyParser}
+  alias SurveyTool.{CLI, Report, SurveyParser}
 
   @argument_error_message """
   Could not generate report. \
@@ -43,6 +43,6 @@ defmodule SurveyTool do
     questions
     |> SurveyParser.generate_survey()
     |> SurveyParser.populate_survey(responses)
-    |> CLI.render_report()
+    |> Report.render_report()
   end
 end

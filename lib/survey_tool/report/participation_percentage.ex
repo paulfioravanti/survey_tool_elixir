@@ -1,4 +1,4 @@
-defmodule SurveyTool.CLI.Report.ParticipationPercentage do
+defmodule SurveyTool.Report.ParticipationPercentage do
   @moduledoc """
   Module representing the participation percentage on a report.
   """
