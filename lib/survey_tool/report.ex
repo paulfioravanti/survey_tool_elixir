@@ -50,7 +50,7 @@ defmodule SurveyTool.Report do
 
   defp add_content(table, questions) do
     questions
-    |> Enum.group_by(&(&1.theme))
+    |> Enum.group_by(& &1.theme)
     |> Enum.reduce(table, &to_responses_row/2)
   end
 

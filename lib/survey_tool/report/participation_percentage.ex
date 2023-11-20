@@ -6,7 +6,7 @@ defmodule SurveyTool.Report.ParticipationPercentage do
   alias SurveyTool.SurveyParser
   alias TableRex.Table
 
-  @type survey :: SurveyParser.survey
+  @type survey :: SurveyParser.survey()
 
   @percent_multiplier Decimal.new(100)
   @rounding_precision 2

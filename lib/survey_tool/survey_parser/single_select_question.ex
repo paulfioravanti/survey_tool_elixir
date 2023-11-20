@@ -32,8 +32,8 @@ defmodule SurveyTool.SurveyParser.SingleSelectQuestion do
     - `question`: The question whose `answers` to add the `answer` to.
     - `answer`: The answer to add to the question.
   """
-  @spec add_answer(SingleSelectQuestion.t(), String.t())
-        :: SingleSelectQuestion.t()
+  @spec add_answer(SingleSelectQuestion.t(), String.t()) ::
+          SingleSelectQuestion.t()
   def add_answer(question = %SingleSelectQuestion{answers: answers}, answer) do
     answers = Map.update(answers, answer, 1, &(&1 + 1))
     %SingleSelectQuestion{question | answers: answers}

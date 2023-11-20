@@ -7,8 +7,8 @@ defmodule SurveyTool.Report.QuestionAndAnswers do
   alias SurveyTool.SurveyParser
   alias TableRex.Table
 
-  @type rating_question :: SurveyParser.rating_question
-  @type single_select_question :: SurveyParser.single_select_question
+  @type rating_question :: SurveyParser.rating_question()
+  @type single_select_question :: SurveyParser.single_select_question()
 
   @rounding_precision 1
 

@@ -4,8 +4,8 @@ defmodule ResponsesFileBadDataTest do
 
   describe "Responses file contains bad rating question data" do
     @report_output File.read!(
-      "test/fixtures/output/bad_rating_question_responses.txt"
-    )
+                     "test/fixtures/output/bad_rating_question_responses.txt"
+                   )
 
     setup(%{argv: argv}) do
       output = capture_io(fn -> SurveyTool.main(argv) end)

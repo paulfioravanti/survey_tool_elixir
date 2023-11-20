@@ -128,15 +128,13 @@ defmodule SurveyTool.SurveyParser do
     |> DateTime.from_iso8601()
   end
 
-  defp to_question(
-    {:ok, response} = {:ok, %{"type" => @rating_question}}
-  ) do
+  defp to_question({:ok, response} = {:ok, %{"type" => @rating_question}}) do
     %RatingQuestion{text: response["text"], theme: response["theme"]}
   end
 
   defp to_question(
-    {:ok, response} = {:ok, %{"type" => @single_select_question}}
-  ) do
+         {:ok, response} = {:ok, %{"type" => @single_select_question}}
+       ) do
     %SingleSelectQuestion{text: response["text"], theme: response["theme"]}
   end
 

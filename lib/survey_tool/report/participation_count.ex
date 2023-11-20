@@ -6,7 +6,7 @@ defmodule SurveyTool.Report.ParticipationCount do
   alias SurveyTool.SurveyParser
   alias TableRex.Table
 
-  @type survey :: SurveyParser.survey
+  @type survey :: SurveyParser.survey()
 
   @spacer String.duplicate("\s", 8)
 
@@ -25,10 +25,10 @@ defmodule SurveyTool.Report.ParticipationCount do
   end
 
   defp participation_count_row(survey) do
-    "Participation Count:"
-    <> @spacer
-    <> formatted_participation_count(survey)
-    <> " Submitted"
+    "Participation Count:" <>
+      @spacer <>
+      formatted_participation_count(survey) <>
+      " Submitted"
   end
 
   defp formatted_participation_count(survey) do

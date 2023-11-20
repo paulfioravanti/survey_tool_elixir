@@ -17,12 +17,10 @@ defmodule QuestionsFileErrorsTest do
   end
 
   describe "Questions file with unknown question types" do
-    @error_message Utilities.error_string(
-      """
-      Could not generate report. \
-      Responses file contained unknown question type of: unknown\
-      """
-    )
+    @error_message Utilities.error_string("""
+                   Could not generate report. \
+                   Responses file contained unknown question type of: unknown\
+                   """)
 
     @tag argv: [
            "--questions",

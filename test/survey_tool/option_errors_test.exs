@@ -27,8 +27,8 @@ defmodule OptionsErrorsTest do
 
   describe "Questions option provided without filepath" do
     @error_message Utilities.error_string(
-      "Path must be specified for questions option."
-    )
+                     "Path must be specified for questions option."
+                   )
 
     setup do
       {:ok, [expected: @error_message <> @help_output]}
@@ -51,8 +51,8 @@ defmodule OptionsErrorsTest do
 
   describe "Responses option provided without filepath" do
     @error_message Utilities.error_string(
-      "Path must be specified for responses option."
-    )
+                     "Path must be specified for responses option."
+                   )
 
     setup do
       {:ok, [expected: @error_message <> @help_output]}

@@ -3,8 +3,8 @@ defmodule NoSubmittedResponsesTest do
   import ExUnit.CaptureIO
 
   @report_output File.read!(
-    "test/fixtures/output/no_submitted_responses_output.txt"
-  )
+                   "test/fixtures/output/no_submitted_responses_output.txt"
+                 )
 
   describe "Generating a report when no responses are submitted" do
     setup(%{argv: argv}) do
