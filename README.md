@@ -50,6 +50,9 @@ mix test.watch
 iex -S mix
 ```
 
+If you are a [Tmuxinator][] user, you can find my config for this project
+[here][tmuxinator-config].
+
 ## Tests
 
 [ExUnit][] was used for the tests, which can be run with the following command:
@@ -85,6 +88,8 @@ There is also a sibling repo to this containing Culture Amp's front end coding
 test, which I wrote in [Elm][]. It can be found [here][survey-tool-elm].
 
 [asdf-elixir pre-compiled version]: https://github.com/asdf-vm/asdf-elixir#elixir-precompiled-versions
+[Build Status image]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml/badge.svg
+[Build Status url]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml
 [Elixir]: https://github.com/elixir-lang/elixir
 [Elm]: https://elm-lang.org/
 [ExCoveralls]: https://github.com/parroty/excoveralls
@@ -94,8 +99,8 @@ test, which I wrote in [Elm][]. It can be found [here][survey-tool-elm].
 [Ruby]: https://github.com/ruby/ruby
 [survey-tool-elm]: https://github.com/paulfioravanti/survey_tool_elm
 [survey-tool-ruby]: https://github.com/paulfioravanti/survey_tool_ruby
-[Build Status image]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml/badge.svg
-[Build Status url]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml
+[Tmuxinator]: https://github.com/tmuxinator/tmuxinator
+[tmuxinator-config]: https://github.com/paulfioravanti/dotfiles/blob/master/tmuxinator/survey_tool_elixir.yml
 
 ---
 
