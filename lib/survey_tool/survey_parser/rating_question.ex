@@ -7,16 +7,14 @@ defmodule SurveyTool.SurveyParser.RatingQuestion do
 
   defstruct scores: [], text: nil, theme: nil
 
-  @typedoc "An optional list of integer scores"
-  @type scores() :: [integer] | []
-  @typedoc "Optional string"
-  @type optional_string() :: String.t() | nil
   @typedoc "Rating question struct type."
   @type t() :: %RatingQuestion{
           scores: scores(),
           text: optional_string(),
           theme: optional_string()
         }
+  @typep scores() :: [integer] | []
+  @typep optional_string() :: String.t() | nil
 
   @max_score 5
   @min_score 1

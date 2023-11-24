@@ -3,8 +3,7 @@ defmodule SurveyTool.CLI.Console do
   Module concerned with outputting content to `stdout`.
   """
 
-  @typedoc "List of message types that can be outputted to console."
-  @type messages_list() :: [error: String.t(), info: String.t()]
+  @typep messages_list() :: [error: String.t(), info: String.t()]
 
   @doc """
   Formats and outputs a message or list of messages to `stdout`.

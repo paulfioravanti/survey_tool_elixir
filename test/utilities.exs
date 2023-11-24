@@ -1,7 +1,7 @@
 defmodule Utilities do
   # Generates a full error string with an
   # ANSI reset and newline appended to the end.
-  @spec error_string(string()) :: string()
+  @spec error_string(String.t()) :: String.t()
   def error_string(message) do
     error_string(message, fn chardata -> IO.ANSI.format(chardata, true) end) <>
       "\n"
@@ -9,7 +9,7 @@ defmodule Utilities do
 
   # Generates an error string without an
   # ANSI reset or newline appended to the end.
-  @spec error_fragment(string()) :: string()
+  @spec error_fragment(String.t()) :: String.t()
   def error_fragment(message) do
     error_string(message, fn chardata ->
       IO.ANSI.format_fragment(chardata, true)

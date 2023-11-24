@@ -5,6 +5,10 @@ defmodule SurveyTool.SurveyParser do
 
   alias SurveyTool.SurveyParser.{RatingQuestion, SingleSelectQuestion, Survey}
 
+  @type survey() :: Survey.t()
+  @opaque rating_question() :: RatingQuestion.t()
+  @opaque single_select_question() :: SingleSelectQuestion.t()
+
   @answers_range 3..-1
   @rows_per_chunk 1
   @question_error_message """
@@ -14,10 +18,6 @@ defmodule SurveyTool.SurveyParser do
   @rating_question "ratingquestion"
   @single_select_question "singleselect"
   @timestamp_index 2
-
-  @type survey :: Survey.t()
-  @type rating_question :: RatingQuestion.t()
-  @type single_select_question :: SingleSelectQuestion.t()
 
   @doc """
   Delegates to `SurveyTool.SurveyParser.RatingQuestion.average_score()` to

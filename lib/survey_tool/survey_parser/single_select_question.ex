@@ -7,21 +7,14 @@ defmodule SurveyTool.SurveyParser.SingleSelectQuestion do
 
   defstruct answers: %{}, text: nil, theme: nil
 
-  @typedoc """
-  An optional map of answers to their tally of occurances in a set
-  of responses
-  """
-  @type answers() :: %{required(String.t()) => integer} | %{}
-
-  @typedoc "Optional string"
-  @type optional_string() :: String.t() | nil
-
   @typedoc "Single select question struct type."
   @type t() :: %SingleSelectQuestion{
           answers: answers(),
           text: optional_string(),
           theme: optional_string()
         }
+  @typep answers() :: %{required(String.t()) => integer} | %{}
+  @typep optional_string() :: String.t() | nil
 
   @doc """
   Adds an answer to a given question and keeps a tally of how

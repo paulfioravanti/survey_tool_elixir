@@ -7,8 +7,8 @@ defmodule SurveyTool.Report.QuestionAndAnswers do
   alias SurveyTool.SurveyParser
   alias TableRex.Table
 
-  @type rating_question :: SurveyParser.rating_question()
-  @type single_select_question :: SurveyParser.single_select_question()
+  @typep rating_question() :: SurveyParser.rating_question()
+  @typep single_select_question() :: SurveyParser.single_select_question()
 
   @rounding_precision 1
 
@@ -20,7 +20,8 @@ defmodule SurveyTool.Report.QuestionAndAnswers do
     - `table`: The table to add the `questions` to.
     - `questions`: The set of questions and answers to add to the `table`.
   """
-  @spec row(Table.t(), [rating_question | single_select_question]) :: Table.t()
+  @spec row(Table.t(), [rating_question() | single_select_question()]) ::
+          Table.t()
   def row(table, questions) do
     Enum.reduce(questions, table, &formatted_row/2)
   end
