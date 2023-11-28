@@ -58,5 +58,5 @@ jobs:
       # The --no-check option will have to be removed on a single build if
       # Elixir or Erlang versions update, but can then be re-instated.
       - name: Run Dialyzer
-        # run: mix dialyzer --halt-exit-status
-        run: mix dialyzer --halt-exit-status --no-check
+        run: mix dialyzer --halt-exit-status
+        # run: mix dialyzer --halt-exit-status --no-check
