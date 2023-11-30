@@ -62,5 +62,5 @@ jobs:
       # Elixir or Erlang versions update, or if any new packages are installed,
       # but can then be re-instated.
       - name: Run Dialyzer
-        run: mix dialyzer --halt-exit-status
-        # run: mix dialyzer --halt-exit-status --no-check
+        # run: mix dialyzer --halt-exit-status
+        run: mix dialyzer --halt-exit-status --no-check
