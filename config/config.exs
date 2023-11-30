@@ -36,6 +36,7 @@ if Mix.env() == :dev do
       "coveralls.html",
       "credo --strict",
       "docs",
+      "gradient",
       "dialyzer"
     ]
 end

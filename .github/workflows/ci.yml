@@ -52,6 +52,9 @@ jobs:
       - name: Run code quality check
         run: mix credo --strict
 
+      - name: Run Gradient
+        run: mix gradient
+
       # NOTE: --no-check option added to skip check on whether PLT file needs to
       # be updated. The version in the cached _build file will be used, hence
       # not slowing down the build while the PLT file gets rebuilt.

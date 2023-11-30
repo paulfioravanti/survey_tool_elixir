@@ -2,7 +2,7 @@ defmodule ResponsesFileBlankRatingsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
 
-  describe "Responses file contains bad rating question data" do
+  describe "Responses file contains blank rating question data" do
     @report_output File.read!(
                      "test/fixtures/output/all_blank_rating_question_responses.txt"
                    )

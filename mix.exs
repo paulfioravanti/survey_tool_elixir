@@ -45,6 +45,8 @@ defmodule SurveyTool.Mixfile do
       {:excoveralls, "~> 0.18", only: :test},
       # ExDoc produces HTML and EPUB documentation for Elixir projects
       {:ex_doc, "~> 0.30", only: [:dev, :test], runtime: false},
+      # Gradual typechecker for Elixir
+      {:gradient, github: "esl/gradient", only: [:dev, :test], runtime: false},
       # Automatically run your Elixir project's tests each time you save a file
       {:mix_test_watch, "~> 1.1", only: :dev, runtime: false},
       # Generate text-based tables for display
