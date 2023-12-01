@@ -14,8 +14,7 @@ defmodule SurveyTool.SurveyParser.Survey do
           questions: questions_list(),
           response_count: integer
         }
-  @typep questions_list() ::
-           [RatingQuestion.t() | SingleSelectQuestion.t()] | []
+  @typep questions_list() :: [RatingQuestion.t() | SingleSelectQuestion.t()]
 
   @doc """
   Calculates the percentage of responses in the survey that
