@@ -5,6 +5,17 @@
 An [Elixir][] CLI application that parses survey data from CSV files, and
 displays the results.
 
+![Screenshot][screenshot url]
+
+I also wrote a version of this app in [Ruby][], which can be found
+[here][survey-tool-ruby]. There is also a sibling repo to this containing
+Culture Amp's front end coding test, which I wrote in [Elm][]. It can be found
+[here][survey-tool-elm].
+
+My review of the coding tests can be found in the following blog post:
+
+- _[Coding Test Review: Culture Amp][]_
+
 ## Setup
 
 ```console
@@ -79,17 +90,10 @@ mix docs
 open doc/index.html
 ```
 
-## Other
-
-I also wrote a version of this app in [Ruby][], which can be found
-[here][survey-tool-ruby].
-
-There is also a sibling repo to this containing Culture Amp's front end coding
-test, which I wrote in [Elm][]. It can be found [here][survey-tool-elm].
-
 [asdf-elixir pre-compiled version]: https://github.com/asdf-vm/asdf-elixir#elixir-precompiled-versions
 [Build Status image]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml/badge.svg
 [Build Status url]: https://github.com/paulfioravanti/survey_tool_elixir/actions/workflows/ci.yml
+[Coding Test Review: Culture Amp]: https://www.paulfioravanti.com/blog/coding-test-review-culture-amp/
 [Elixir]: https://github.com/elixir-lang/elixir
 [Elm]: https://elm-lang.org/
 [ExCoveralls]: https://github.com/parroty/excoveralls
@@ -97,6 +101,7 @@ test, which I wrote in [Elm][]. It can be found [here][survey-tool-elm].
 [ExUnit]: https://hexdocs.pm/ex_unit/ExUnit.html
 [`mix test.watch`]: https://github.com/lpil/mix-test.watch
 [Ruby]: https://github.com/ruby/ruby
+[screenshot url]: ./elixir-screenshot.jpg
 [survey-tool-elm]: https://github.com/paulfioravanti/survey_tool_elm
 [survey-tool-ruby]: https://github.com/paulfioravanti/survey_tool_ruby
 [Tmuxinator]: https://github.com/tmuxinator/tmuxinator
